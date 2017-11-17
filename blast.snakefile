@@ -13,10 +13,9 @@ rule download_Oe6_inputs_blast:
 	'''
 	
 rule download_sylv_inputs_blast:
-    output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa'  
+    output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz'  
     shell:'''
-		wget http://olivegenome.org/genome_datasets/Olea_europaea%3E1kb_scaffolds.gz | gunzip > {output} # scaffolds larger than 1 kb
-	'''
+		wget -o inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz http://olivegenome.org/genome_datasets/Olea_europaea%3E1kb_scaffolds.gz
     
 rule samtools_index_Oe6:
     output: 'inputs/Oe6/Oe6.scaffolds.fa.fai'
