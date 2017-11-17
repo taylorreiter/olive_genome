@@ -36,8 +36,8 @@ rule compute_sourmash_signature_sylv_k31:
 rule setup_sourmash_lca:
     output: 'inputs/genbank_lca/genbank.lca.json'
     shell:'''
-    	curl -L https://osf.io/2vjkm/download?version=1 -o inputs/genbank_lca/genbank-k31.lca.json.gz
-    	tar xzf inputs/genbank_lca/genbank-k31.lca.json.gz
+    	curl -L https://osf.io/zskb9/download?version=1 -o inputs/genbank_lca/genbank-k31.lca.json.gz
+    	gunzip inputs/genbank_lca/genbank-k31.lca.json.gz > {output}
     '''
     
 rule run_sourmash_LCA_Oe6:
