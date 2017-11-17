@@ -24,7 +24,8 @@ rule samtools_index_Oe6:
     shell:'''
     	samtools faidx Oe6.scaffolds.fa
     '''
-rule gunzip_sylvestris:
+    
+rule expand_sylvestris:
     output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa'
     input: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz'
     shell:'''
