@@ -3,11 +3,11 @@
 #         'outputs/aur-pul-nucmer/Oe6-APvarSan_filter_coords.txt',
 #         'outputs/aur-pul-nucmer/Oe6-APvarEx_filter_coords.txt'
         
-# rule download_Oe6_genome_apul:
-#     output: 'inputs/Oe6/Oe6.scaffolds.fa.gz'
-#     shell:'''
-#     wget -O http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz {output}
-# 	'''
+rule download_Oe6_genome_apul:
+    output: 'inputs/Oe6/Oe6.scaffolds.fa.gz'
+    shell:'''
+    wget -O http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz {output}
+	'''
 
 rule download_Apul_genomes:
     output:

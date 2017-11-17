@@ -17,7 +17,7 @@ Configure miniconda and create an environment
 /home/ubuntu/miniconda3/bin/conda config --add channels conda-forge
 /home/ubuntu/miniconda3/bin/conda config --add channels bioconda
 
-/home/ubuntu/miniconda3/bin/conda create -n snakemake python==3.6 snakemake=4.0 pysam=0.13 pandas=0.20.3 numpy=1.13.3 
+/home/ubuntu/miniconda3/bin/conda create -n snakemake python==3.6 snakemake=4.3.0 pysam=0.13 pandas=0.20.3 numpy=1.13.3 
 
 source /home/ubuntu/miniconda3/bin/activate snakemake
 ```
