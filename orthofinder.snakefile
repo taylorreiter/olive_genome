@@ -15,10 +15,12 @@ rule download_sylv_inputs_orthofinder:
     
 rule run_orthofinder:
     output: 'outputs/Results_*_orthofinder'
-    input: 'inputs/peptides/'
+    input: 
+        'inputs/peptides/Olea_europaea.gene.pep.final.chr_and_chrUn_noTE.fa.gz',
+        'inputs/peptides/OE6A.pep.fa'
     conda: 'envs/env.yml'
     shell:'''
     cd outputs
-	orthofinder -f {input} -og
+	orthofinder -f inputs/peptides -og
 	'''
     

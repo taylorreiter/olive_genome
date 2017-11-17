@@ -1,13 +1,13 @@
 # rule all: 
 #    input: 'outputs/olive_genomes_nucmer/sylvester_santander_nucmer_filter_coords.txt'
     
-rule download_Oe6_inputs:
+rule download_Oe6_inputs_olive_nucmer:
     output: 'inputs/Oe6/Oe6.scaffolds.fa.gz'
     shell:'''
     wget -O http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz {output}
 	'''
 
-rule download_sylv_inputs:
+rule download_sylv_inputs_olive_nucmer:
     output: 'inputs/sylvestris/Olea_europaea_chromosome+unchromosome.gz'
     shell:'''
 	wget -O http://olivegenome.org/genome_datasets/Olea_europaea_chromosome+unchromosome.gz {output}

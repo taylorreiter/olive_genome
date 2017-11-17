@@ -3,20 +3,13 @@ import pandas as pd
 include: "olivenucmer.snakefile"
 include: "apulnucmer.snakefile"         
 include: "orthofinder.snakefile"            
-include: "tetramernucleotide.snakefile"
 include: "busco.snakefile"
 include: "blast.snakefile"
 
 rule all:
     input:
-        'outputs/Oe6/Oe6.scaffolds-k4.comp.matrix.png',
-        'outputs/Oe6/suspicious_contigs.txt',
-        'outputs/sylvestris/suspicious_contigs.txt',
-        expand("outputs/{genome}/blast/tab/{suspicious_contig}.tab", genome = ['Oe6', 'sylvestris'], suspicious_contig = suspicious_contigs_Oe6[0] + suspicious_contigs_sylvestris[0]),
-        expand("outputs/Oe6/{Oe6_suspicious_contigs}.fa",
-                Oe6_suspicious_contigs = suspicious_contigs_Oe6[0]),
-        expand("outputs/sylvestris/{sylvestris_suspicious_contigs}.fa",
-                sylvestris_suspicious_contigs = suspicious_contigs_sylvestris[0]),
+        dynamic("outputs/Oe6/blast/tab/{contig_names}.tab"),
+        dynamic("outputs/sylvestris/blast/tab/{contig_names}.tab"),
         'outputs/sourmash_lca/Oe6.scaffolds-k31.fa.lca.txt',
         'outputs/sourmash_lca/Olea_europaea_1kb_scaffolds-k31.lca.txt',
         'outputs/olive_genomes_nucmer/sylvester_santander_nucmer_filter_coords.txt',
