@@ -6,13 +6,13 @@
 rule download_Oe6_inputs_lca:
     output: 'inputs/Oe6/Oe6.scaffolds_lca.fa.gz'
     shell:'''
-    	wget -O http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz {output}
+    	wget -O {output} http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz
     '''
 	
 rule download_sylv_inputs_lca:
-    output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz'  
+    output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds_lca.fa.gz'  
     shell:'''
-		wget -O http://olivegenome.org/genome_datasets/Olea_europaea%3E1kb_scaffolds.gz {output} # scaffolds larger than 1 kb
+		wget -O {output} http://olivegenome.org/genome_datasets/Olea_europaea%3E1kb_scaffolds.gz
 	'''
 
 rule compute_sourmash_signature_Oe6_k31:
@@ -26,7 +26,7 @@ rule compute_sourmash_signature_Oe6_k31:
    
 rule compute_sourmash_signature_sylv_k31:
    output: 'outputs/sylvestris/Olea_europaea_1kb_scaffolds-k31.fa.sig'
-   input: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz'
+   input: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds_lca.fa.gz'
    conda: "envs/env.yml"
    shell:'''
    # compute tetranucleotide frequency of scaffolds
