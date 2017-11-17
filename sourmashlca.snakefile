@@ -3,16 +3,16 @@
 #         'outputs/sourmash_lca/Oe6.scaffolds-k31.fa.lca.txt',
 #         'outputs/sourmash_lca/Olea_europaea_1kb_scaffolds-k31.lca.txt'
 
-rule download_Oe6_inputs_lca:
-    output: 'inputs/Oe6/Oe6.scaffolds.fa.gz'
-    shell:'''
-    	wget -O http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz {output.genome}
+# rule download_Oe6_inputs_lca:
+#     output: 'inputs/Oe6/Oe6.scaffolds.fa.gz'
+#     shell:'''
+#     	wget -O http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz {output}
 	'''
 	
 rule download_sylv_inputs_lca:
     output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz'  
     shell:'''
-		wget -O http://olivegenome.org/genome_datasets/Olea_europaea%3E1kb_scaffolds.gz {output.genome_pruned} # scaffolds larger than 1 kb
+		wget -O http://olivegenome.org/genome_datasets/Olea_europaea%3E1kb_scaffolds.gz {output} # scaffolds larger than 1 kb
 	'''
 
 rule compute_sourmash_signature_Oe6_k31:
@@ -36,9 +36,8 @@ rule compute_sourmash_signature_sylv_k31:
 rule setup_sourmash_lca:
     output: 'inputs/genbank_lca/genbank.lca.json'
     shell:'''
-    	cd inputs/genbank_lca
-    	curl -L https://osf.io/2vjkm/download?version=1 -o genbank-k31.lca.json.gz
-    	tar xzf genbank-k31.lca.json.gz
+    	curl -L https://osf.io/2vjkm/download?version=1 -o inputs/genbank_lca/genbank-k31.lca.json.gz
+    	tar xzf inputs/genbank_lca/genbank-k31.lca.json.gz
     '''
     
 rule run_sourmash_LCA_Oe6:

@@ -11,7 +11,7 @@ from sourmash_lib import signature
 rule download_Oe6_genome_k4:
     output: 'inputs/Oe6/Oe6.scaffolds.fa.gz'
     shell:'''
-    wget -O http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz {output.genome}
+    wget -O http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz {output}
 	'''
 
 rule download_sylv_genome_k4:
@@ -108,9 +108,13 @@ rule split_sylv_k4_sig:
 rule run_sourmash_compare_sylv_1kb:
     output: 
         'outputs/sylvestris/Olea_europaea_1kb_scaffolds_0.comp',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_0.comp.labels.txt',
         'outputs/sylvestris/Olea_europaea_1kb_scaffolds_1.comp',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_1.comp.labels.txt',
         'outputs/sylvestris/Olea_europaea_1kb_scaffolds_2.comp',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_3.comp'
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_2.comp.labels.txt',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_3.comp',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_3.comp.labels.txt'
     input: 
         'outputs/sylvestris/Olea_europaea_1kb_scaffolds_0.sig',
         'outputs/sylvestris/Olea_europaea_1kb_scaffolds_1.sig',

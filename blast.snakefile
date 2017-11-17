@@ -63,7 +63,7 @@ rule grab_suspicious_contigs_Oe6:
                 text_file.write(f">{line}\n{fasta_of_interest}")    
 
 rule grab_suspicious_contigs_sylv:
-    output: dynamic('outputs/sylv/suspicious_contigs/{contig_names}.fa')
+    output: dynamic('outputs/sylvestris/suspicious_contigs/{contig_names}.fa')
     input: 
         contigs = tetramernucleotide_clustering('outputs/sylvestris/suspicious_contigs.txt'),
         genome = 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa',
@@ -76,7 +76,7 @@ rule grab_suspicious_contigs_sylv:
             line = line.strip()
             # use pysam to grab the line of interest
             fasta_of_interest = fasta.fetch(line)
-            with open(f"outputs/sylv/suspicious_contigs/{line}.fa", "w") as text_file:
+            with open(f"outputs/sylvestris/suspicious_contigs/{line}.fa", "w") as text_file:
                 # write content of fasta file with appropriate header and sequence
                 text_file.write(f">{line}\n{fasta_of_interest}")    
 
