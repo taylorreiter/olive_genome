@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from sourmash_lib import signature
 
 #rule all:
 #    input:
@@ -89,7 +90,6 @@ rule split_sylv_k4_sig:
     input: 'outputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.sig'
     conda: "envs/env.yml"
     run:
-        from sourmash_lib import signature
         with open({input}, 'rt') as sigfp:
             current_sigs = []
             n_sigs = 0
