@@ -31,7 +31,7 @@ rule apul_san_nucmer:
 rule apul_san_nucmer_filter:
     output: 'outputs/aur-pul-nucmer/Oe6-APvarSan_filter.delta'
     input: 'outputs/aur-pul-nucmer/Oe6-APvarSan.delta'
-    conda: "envs/env.yaml"
+    conda: "envs/env.yml"
     shell:'''
     delta-filter -l 500 -q {input} > {output} 
     '''
@@ -39,7 +39,7 @@ rule apul_san_nucmer_filter:
 rule apul_san_nucmer_coords:
     output: 'outputs/aur-pul-nucmer/Oe6-APvarSan_filter_coords.txt'
     input: 'outputs/aur-pul-nucmer/Oe6-APvarSan_filter.delta'
-    conda: "envs/env.yaml"
+    conda: "envs/env.yml"
     shell:'''
     show-coords -c -l -L 500 -r -T {input} > {output}
     '''
