@@ -9,7 +9,7 @@ from sourmash_lib import signature
 #        'outputs/sylvestris/suspicious_contigs.txt'
 
 rule download_Oe6_genome_k4:
-    output: 'inputs/Oe6/Oe6.scaffolds.fa.gz'
+    output: 'inputs/Oe6/Oe6.scaffolds_k4.fa.gz'
     shell:'''
     wget -O http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz {output}
 	'''
@@ -22,7 +22,7 @@ rule download_sylv_genome_k4:
 
 rule compute_sourmash_signature_k4_Oe6:
    output: 'outputs/Oe6/Oe6.scaffolds-k4.fa.sig'
-   input: 'inputs/Oe6/Oe6.scaffolds.fa.gz'
+   input: 'inputs/Oe6/Oe6.scaffolds_k4.fa.gz'
    conda: "envs/env.yml"
    shell:'''
    # compute tetranucleotide frequency of scaffolds

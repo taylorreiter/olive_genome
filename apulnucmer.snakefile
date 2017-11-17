@@ -4,7 +4,7 @@
 #         'outputs/aur-pul-nucmer/Oe6-APvarEx_filter_coords.txt'
         
 rule download_Oe6_genome_apul:
-    output: 'inputs/Oe6/Oe6.scaffolds.fa.gz'
+    output: 'inputs/Oe6/Oe6.scaffolds_apul.fa.gz'
     shell:'''
     wget -O http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz {output}
 	'''
@@ -22,7 +22,7 @@ rule apul_san_nucmer:
     output: 'outputs/aur-pul-nucmer/Oe6-APvarSan.delta' 
     input: 
         san = 'inputs/aur-pul/GCA_001678115.1_ASM167811v1_genomic.fna.gz',
-        Oe6 = 'inputs/Oe6/Oe6.scaffolds.fa.gz'
+        Oe6 = 'inputs/Oe6/Oe6.scaffolds_apul.fa.gz'
     conda: "envs/env.yml"
     shell:'''
     nucmer --mum {input.Oe6} {input.san} -p Oe6-APvarSan
@@ -48,7 +48,7 @@ rule apul_exf150_nucmer:
     output: 'outputs/aur-pul-nucmer/Oe6-APvarEx.delta'
     input:
         ex150 = 'inputs/aur-pul/GCA_000721785.1_Aureobasidium_pullulans_var._pullulans_EXF-150_assembly_version_1.0_genomic.fna.gz',
-        Oe6 = 'inputs/Oe6/Oe6.scaffolds.fa.gz'
+        Oe6 = 'inputs/Oe6/Oe6.scaffolds_apul.fa.gz'
     conda: "envs/env.yml"
     shell:'''
     nucmer --mum {input.Oe6} {input.ex150} -p Oe6-APvarEx
