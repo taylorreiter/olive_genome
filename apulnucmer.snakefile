@@ -47,8 +47,8 @@ rule apul_san_nucmer_coords:
 rule apul_exf150_nucmer:
     output: 'outputs/aur-pul-nucmer/Oe6-APvarEx.delta'
     input:
-        ex150='inputs/aur-pul/GCA_000721785.1_Aureobasidium_pullulans_var._pullulans_EXF-150_assembly_version_1.0_genomic.fna.gz',
-        Oe6='inputs/Oe6/Oe6.scaffolds.fa.gz'
+        ex150 = 'inputs/aur-pul/GCA_000721785.1_Aureobasidium_pullulans_var._pullulans_EXF-150_assembly_version_1.0_genomic.fna.gz',
+        Oe6 = 'inputs/Oe6/Oe6.scaffolds.fa.gz'
     conda: "envs/env.yml"
     shell:'''
     nucmer --mum {input.Oe6} {input.ex150} -p Oe6-APvarEx
