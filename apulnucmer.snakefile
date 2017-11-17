@@ -22,7 +22,7 @@ rule apul_san_nucmer:
     output: 'outputs/aur-pul-nucmer/Oe6-APvarSan.delta' 
     input: 
         san='inputs/aur-pul/GCA_001678115.1_ASM167811v1_genomic.fna.gz',
-        Oe6='inputs/Oe6/Oe6.scaffolds.fa.gz',
+        Oe6='inputs/Oe6/Oe6.scaffolds.fa.gz'
     conda: "envs/env.yml"
     shell:'''
     nucmer --mum {input.Oe6} {input.san} -p Oe6-APvarSan
