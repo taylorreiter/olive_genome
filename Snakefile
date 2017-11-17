@@ -16,4 +16,3 @@ rule all:
         'outputs/aur-pul-nucmer/Oe6-APvarEx_filter_coords.txt',
         'outputs/busco/run_wild_olive_busco',
         'outputs/Results_*_orthofinder'
-        'inputs/Oe6/Oe6.scaffolds.fa.gz'
