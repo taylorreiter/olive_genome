@@ -53,7 +53,7 @@ rule run_sourmash_LCA_Oe6:
 rule run_sourmash_LCA_sylv:
     output: 'outputs/sourmash_lca/Olea_europaea_1kb_scaffolds-k31.lca.txt'
     input:
-        genbank='inputs/genbank_lca/genbank.lca.json',
+        genbank='inputs/genbank_lca/genbank-k31.lca.json',
         sig='outputs/sylvestris/Olea_europaea_1kb_scaffolds-k31.fa.sig'
     conda: "envs/sourmash-lca.yml"
     shell:'''
