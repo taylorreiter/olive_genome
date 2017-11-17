@@ -88,7 +88,6 @@ rule split_sylv_k4_sig:
         'outputs/sylvestris/Olea_europaea_1kb_scaffolds_2.sig',
         'outputs/sylvestris/Olea_europaea_1kb_scaffolds_3.sig'
     input: 'outputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.sig'
-    conda: "envs/env.yml"
     run:
         with open({input}, 'rt') as sigfp:
             current_sigs = []
