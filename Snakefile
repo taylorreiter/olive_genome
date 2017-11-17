@@ -17,8 +17,8 @@ rule all:
         'outputs/busco/run_wild_olive_busco',
         'outputs/Results_*_orthofinder'
 
-rule download_Oe6_genome:
-    output: 'inputs/Oe6/Oe6.scaffolds.fa.gz'
-    shell:'''
-    	wget -O http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz {output}
-	'''
+# rule download_Oe6_genome:
+#     output: 'inputs/Oe6/Oe6.scaffolds.fa.gz'
+#     shell:'''
+#     	wget -O http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz {output}
+# 	'''
