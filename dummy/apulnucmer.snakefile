@@ -6,7 +6,7 @@
 rule download_Oe6_genome_apul:
     output: 'inputs/Oe6/Oe6.scaffolds_apul.fa.gz'
     shell:'''
-    wget -O http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz {output}
+    wget -O https://osf.io/3mkv8/download?version=1 {output}
 	'''
 
 rule download_Apul_genomes:

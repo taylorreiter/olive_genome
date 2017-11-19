@@ -6,13 +6,13 @@
 rule download_Oe6_inputs_lca:
     output: 'inputs/Oe6/Oe6.scaffolds_lca.fa.gz'
     shell:'''
-    	wget -O {output} http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz
+    	wget -O {output} https://osf.io/3mkv8/download?version=1
     '''
 	
 rule download_sylv_inputs_lca:
     output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds_lca.fa.gz'  
     shell:'''
-		wget -O {output} http://olivegenome.org/genome_datasets/Olea_europaea%3E1kb_scaffolds.gz
+		wget -O {output} https://osf.io/dzse9/download?version=1
 	'''
 
 rule compute_sourmash_signature_Oe6_k31:
