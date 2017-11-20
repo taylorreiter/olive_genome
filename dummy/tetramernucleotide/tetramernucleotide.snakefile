@@ -142,10 +142,10 @@ rule suspicious_contigs_sylv:
         
     run:
         # load numpy array into python
-        comp0 = np.load({input.comp0})
-        comp1 = np.load({input.comp1})
-        comp2 = np.load({input.comp2})
-        comp3 = np.load({input.comp3})
+        comp0 = np.load(input.comp0)
+        comp1 = np.load(input.comp1)
+        comp2 = np.load(input.comp2)
+        comp3 = np.load(input.comp3)
         
         # convert to a pandas dataframe
         df0 = pd.DataFrame(comp0)
@@ -154,16 +154,16 @@ rule suspicious_contigs_sylv:
         df3 = pd.DataFrame(comp3)
         
         # read labels into python
-        f0 = open({input.lab0}, 'r')
+        f0 = open(input.lab0, 'r')
         labels0 = f0.readlines()
 	
-        f1 = open({input.lab1}, 'r')
+        f1 = open(input.lab1, 'r')
         labels1 = f1.readlines()
         
-        f2 = open({input.lab2}, 'r')
+        f2 = open(input.lab2, 'r')
         labels2 = f2.readlines()
         
-        f3 = open({input.lab3}, 'r')
+        f3 = open(input.lab3, 'r')
         labels3 = f3.readlines()
         
         # set column names to labels
