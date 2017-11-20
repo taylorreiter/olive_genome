@@ -96,7 +96,7 @@ rule split_sylv_k4_sig:
             for sig in signature.load_signatures(sigfp):
                 current_sigs.append(sig)
                 n_sigs += 1
-                if n_sigs == 10689:
+                if n_sigs == 5000:
                     with open('outputs/sylvestris/Olea_europaea_1kb_scaffolds.fa{}.sig'.format(next_file), 'wt') as fp:
                         signature.save_signatures(current_sigs, fp)
                         next_file += 1
