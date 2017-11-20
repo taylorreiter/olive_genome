@@ -14,13 +14,6 @@ rule download_Oe6_genome_k4:
     wget -O {output} https://osf.io/3mkv8/download?version=1
 	'''
 
-rule download_sylv_genome_k4:
-    output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz'
-    shell:'''
-	wget -O inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz https://osf.io/dzse9/download?version=2
-	gunzip inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz > {output}
-	'''
-
 rule compute_sourmash_signature_k4_Oe6:
    output: 'outputs/Oe6/Oe6.scaffolds-k4.fa.sig'
    input: 'inputs/Oe6/Oe6.scaffolds_k4.fa.gz'
@@ -73,6 +66,12 @@ rule suspicious_contigs_Oe6:
             for item in suspicious_column_names:
                 file_handler.write("{}\n".format(item))
 
+rule download_sylv_genome_k4:
+    output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa'
+    shell:'''
+	wget -O inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz https://osf.io/dzse9/download?version=2
+	gunzip inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz > {output}
+	'''
 
 rule split_sylvester:
     output: 
