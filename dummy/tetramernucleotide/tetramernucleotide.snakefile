@@ -188,6 +188,6 @@ rule suspicious_contigs_sylv:
         suspicious_column_names = suspicious_column_names0 + suspicious_column_names1 + suspicious_column_names2 + suspicious_column_names3
         
         # write suspicious labels to a file
-        with open(file0, 'w') as file_handler:
+        with open(output.file0, 'w') as file_handler:
             for item in suspicious_column_names:
                 file_handler.write("{}\n".format(item))
