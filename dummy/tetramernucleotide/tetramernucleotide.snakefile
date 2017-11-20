@@ -108,13 +108,13 @@ rule compute_sourmash_signature_k4_sylv:
 rule run_sourmash_compare_sylv_1kb:
     output: 
         slice0='outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.comp',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.comp.labels.txt',
+        slice0label='outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.comp.labels.txt',
         slice1='outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.comp',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.comp.labels.txt',
+        slice1label='outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.comp.labels.txt',
         slice2='outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.comp',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.comp.labels.txt',
+        slice2label='outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.comp.labels.txt',
         slice3='outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.comp',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.comp.labels.txt'
+        slice3label='outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.comp.labels.txt'
     input: 
         slice0='outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.sig',
         slice1='outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.sig',
