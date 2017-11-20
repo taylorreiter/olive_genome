@@ -92,10 +92,10 @@ rule compute_sourmash_signature_k4_sylv:
         'outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.sig',
         'outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.sig'
     input:
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.fa',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.fa',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.fa',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.fa'
+        'inputs/sylvestris/Olea_europaea_1kb_scaffolds.0.fa',
+        'inputs/sylvestris/Olea_europaea_1kb_scaffolds.1.fa',
+        'inputs/sylvestris/Olea_europaea_1kb_scaffolds.2.fa',
+        'inputs/sylvestris/Olea_europaea_1kb_scaffolds.3.fa'
     conda: "envs/env.yml"
     shell:'''
     # compute tetranucleotide frequency of scaffolds
