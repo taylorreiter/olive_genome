@@ -10,7 +10,7 @@ rule download_sylv_inputs_busco:
 rule run_busco:
     output: 'outputs/busco/run_wild_olive_busco'
     input: 'inputs/sylvestris/Olea_europaea_all_scaffolds.fa'
-    conda:  "envs/env.yml"
+    conda:  "envs/busco.yml"
     shell:'''
 	wget http://busco.ezlab.org/datasets/embryophyta_odb9.tar.gz
 	tar xvf embryophyta_odb9.tar.gz
