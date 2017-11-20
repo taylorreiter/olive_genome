@@ -107,22 +107,25 @@ rule compute_sourmash_signature_k4_sylv:
 
 rule run_sourmash_compare_sylv_1kb:
     output: 
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.comp',
+        slice0='outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.comp',
         'outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.comp.labels.txt',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.comp',
+        slice1='outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.comp',
         'outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.comp.labels.txt',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.comp',
+        slice2='outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.comp',
         'outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.comp.labels.txt',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.comp',
+        slice3='outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.comp',
         'outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.comp.labels.txt'
     input: 
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.sig',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.sig',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.sig',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.sig'
+        slice0='outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.sig',
+        slice1='outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.sig',
+        slice2='outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.sig',
+        slice3='outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.sig'
     conda: "envs/env.yml"
     shell:'''
-    sourmash compare -k 4 -o {output} {input} 
+    sourmash compare -k 4 -o {output.slice0} {input.slice0} 
+    sourmash compare -k 4 -o {output.slice1} {input.slice1}
+    sourmash compare -k 4 -o {output.slice2} {input.slice2}
+    sourmash compare -k 4 -o {output.slice3} {input.slice3}
     '''
 
 rule suspicious_contigs_sylv:
