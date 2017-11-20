@@ -87,15 +87,15 @@ rule split_sylvester:
 
 rule compute_sourmash_signature_k4_sylv:
     output: 
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.sig',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.sig',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.sig',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.sig'
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.*.sig',
+#         'outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.sig',
+#         'outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.sig',
+#         'outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.sig'
     input:
-        'inputs/sylvestris/Olea_europaea_1kb_scaffolds.0.fa',
-        'inputs/sylvestris/Olea_europaea_1kb_scaffolds.1.fa',
-        'inputs/sylvestris/Olea_europaea_1kb_scaffolds.2.fa',
-        'inputs/sylvestris/Olea_europaea_1kb_scaffolds.3.fa'
+        'inputs/sylvestris/Olea_europaea_1kb_scaffolds.*.fa',
+#         'inputs/sylvestris/Olea_europaea_1kb_scaffolds.1.fa',
+#         'inputs/sylvestris/Olea_europaea_1kb_scaffolds.2.fa',
+#         'inputs/sylvestris/Olea_europaea_1kb_scaffolds.3.fa'
     conda: "envs/env.yml"
     shell:'''
     # compute tetranucleotide frequency of scaffolds
