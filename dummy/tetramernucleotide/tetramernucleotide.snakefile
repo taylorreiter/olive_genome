@@ -40,16 +40,19 @@ rule plot_compare_Oe6:
     '''
 
 rule suspicious_contigs_Oe6:
-    output: 'outputs/Oe6/suspicious_contigs.txt'
-    input: 'outputs/Oe6/Oe6.scaffolds-k4.comp'
+    output: 
+        Oe6_contigs='outputs/Oe6/suspicious_contigs.txt'
+    input: 
+        comp='outputs/Oe6/Oe6.scaffolds-k4.comp'
+        labels='outputs/Oe6/Oe6.scaffolds-k4.comp.labels.txt'
     run:
         # load numpy array into python
-        comp = np.load('outputs/Oe6/Oe6.scaffolds-k4.comp')
+        comp = np.load(input.comp)
         # convert to a pandas dataframe
         df = pd.DataFrame(comp)
     
         # read labels into python
-        f = open('outputs/Oe6/Oe6.scaffolds-k4.comp.labels.txt', 'r')
+        f = open(input.labels, 'r')
         labels = f.readlines()
 	
         # set column names to labels
@@ -62,7 +65,7 @@ rule suspicious_contigs_Oe6:
         suspicious_column_names = suspicious_columns.columns.tolist()
     
         # write suspicious labels to a file
-        with open({output}, 'w') as file_handler:
+        with open(output.Oe6_contigs, 'w') as file_handler:
             for item in suspicious_column_names:
                 file_handler.write("{}\n".format(item))
 
