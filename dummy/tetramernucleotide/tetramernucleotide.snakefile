@@ -43,7 +43,7 @@ rule suspicious_contigs_Oe6:
     output: 
         Oe6_contigs='outputs/Oe6/suspicious_contigs.txt'
     input: 
-        comp='outputs/Oe6/Oe6.scaffolds-k4.comp'
+        comp='outputs/Oe6/Oe6.scaffolds-k4.comp',
         labels='outputs/Oe6/Oe6.scaffolds-k4.comp.labels.txt'
     run:
         # load numpy array into python
