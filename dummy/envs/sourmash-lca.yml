@@ -2,4 +2,4 @@ channels:
  - bioconda
 dependencies:
  - pip:
-  -"editable=git+https://github.com/dib-lab/sourmash.git@add/lca#egg=sourmash"
+   - "editable=git+https://github.com/dib-lab/sourmash.git@add/lca#egg=sourmash"
