@@ -87,19 +87,22 @@ rule split_sylvester:
 
 rule compute_sourmash_signature_k4_sylv:
     output: 
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.*.sig',
-#         'outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.sig',
-#         'outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.sig',
-#         'outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.sig'
+        slice0='outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.sig',
+        slice1='outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.sig',
+        slice2='outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.sig',
+        slice3='outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.sig'
     input:
-        'inputs/sylvestris/Olea_europaea_1kb_scaffolds.*.fa',
-#         'inputs/sylvestris/Olea_europaea_1kb_scaffolds.1.fa',
-#         'inputs/sylvestris/Olea_europaea_1kb_scaffolds.2.fa',
-#         'inputs/sylvestris/Olea_europaea_1kb_scaffolds.3.fa'
+        slice0='inputs/sylvestris/Olea_europaea_1kb_scaffolds.0.fa',
+        slice1='inputs/sylvestris/Olea_europaea_1kb_scaffolds.1.fa',
+        slice2='inputs/sylvestris/Olea_europaea_1kb_scaffolds.2.fa',
+        slice3='inputs/sylvestris/Olea_europaea_1kb_scaffolds.3.fa'
     conda: "envs/env.yml"
     shell:'''
     # compute tetranucleotide frequency of scaffolds
-    sourmash compute -k 4 --scaled 5 --track-abundance --singleton --name-from-first -o {output} {input}
+    sourmash compute -k 4 --scaled 5 --track-abundance --singleton --name-from-first -o {output.slice0} {input.slice0}
+    sourmash compute -k 4 --scaled 5 --track-abundance --singleton --name-from-first -o {output.slice1} {input.slice1}
+    sourmash compute -k 4 --scaled 5 --track-abundance --singleton --name-from-first -o {output.slice2} {input.slice2}
+    sourmash compute -k 4 --scaled 5 --track-abundance --singleton --name-from-first -o {output.slice3} {input.slice3}
     '''
 
 rule run_sourmash_compare_sylv_1kb:
