@@ -9,13 +9,14 @@ import pysam
 rule download_Oe6_inputs_blast:
     output: 'inputs/Oe6/Oe6.scaffolds.fa'
     shell:'''
-    	wget https://osf.io/3mkv8/download?version=1 | gunzip > {output}
+    	wget -O inputs/Oe6.scaffolds.fa.gz https://osf.io/3mkv8/download?version=1
+    	gunzip inputs/Oe6.scaffolds.fa.gz > {output}
 	'''
 	
 rule download_sylv_inputs_blast:
     output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz'  
     shell:'''
-		wget -o {output} https://osf.io/dzse9/download?version=1
+		wget -O {output} https://osf.io/dzse9/download?version=1
     '''
 
 rule samtools_index_Oe6:

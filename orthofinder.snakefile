@@ -4,13 +4,13 @@
 rule download_Oe6_inputs_orthofinder:
     output: 'inputs/peptides/OE6A.pep.fa'
     shell:'''
-    wget -O http://denovo.cnag.cat/genomes/olive/download/Oe6/OE6A.pep.fa {output}
+    wget -O {output} http://denovo.cnag.cat/genomes/olive/download/Oe6/OE6A.pep.fa 
 	'''
 
 rule download_sylv_inputs_orthofinder:
     output: 'inputs/peptides/Olea_europaea.gene.pep.final.chr_and_chrUn_noTE.fa.gz'
     shell:'''
-	wget -O http://olivegenome.org/genome_datasets/Olea_europaea.gene.pep.final.chr_and_chrUn_noTE.gz {output}
+	wget -O {output} http://olivegenome.org/genome_datasets/Olea_europaea.gene.pep.final.chr_and_chrUn_noTE.gz 
 	'''
     
 rule run_orthofinder:

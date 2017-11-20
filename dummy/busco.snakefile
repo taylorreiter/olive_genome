@@ -4,7 +4,8 @@
 rule download_sylv_inputs_busco:
     output: 'inputs/sylvestris/Olea_europaea_all_scaffolds.fa'
     shell:'''
-	wget -O https://osf.io/dzse9/download?version=1 | gunzip > {output}
+	wget -O inputs/sylvestris/Olea_europaea_all_scaffolds.fa.gz https://osf.io/dzse9/download?version=1 
+	gunzip inputs/sylvestris/Olea_europaea_all_scaffolds.fa.gz > {output}
 	'''
 
 rule run_busco:

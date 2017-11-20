@@ -4,13 +4,13 @@
 rule download_Oe6_inputs_orthofinder:
     output: 'inputs/peptides/OE6A.pep.fa'
     shell:'''
-    wget -O https://osf.io/c3m9a/download?version=1 {output}
+    wget -O {output} https://osf.io/c3m9a/download?version=1 
 	'''
 
 rule download_sylv_inputs_orthofinder:
     output: 'inputs/peptides/Olea_europaea.gene.pep.final.chr_and_chrUn_noTE.fa.gz'
     shell:'''
-	wget -O https://osf.io/t9f4s/download?version=1 {output}
+	wget -O {output} https://osf.io/t9f4s/download?version=1 
 	'''
     
 rule run_orthofinder:

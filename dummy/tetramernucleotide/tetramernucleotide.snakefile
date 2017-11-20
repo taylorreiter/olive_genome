@@ -11,13 +11,13 @@ from sourmash_lib import signature
 rule download_Oe6_genome_k4:
     output: 'inputs/Oe6/Oe6.scaffolds_k4.fa.gz'
     shell:'''
-    wget -O http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz {output}
+    wget -O {output} https://osf.io/3mkv8/download?version=1
 	'''
 
 rule download_sylv_genome_k4:
     output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz'
     shell:'''
-	wget -O http://olivegenome.org/genome_datasets/Olea_europaea%3E1kb_scaffolds.gz {output}
+	wget -O {output} https://osf.io/dzse9/download?version=1 
 	'''
 
 rule compute_sourmash_signature_k4_Oe6:

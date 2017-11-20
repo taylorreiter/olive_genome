@@ -9,13 +9,14 @@ import pysam
 rule download_Oe6_inputs_blast:
     output: 'inputs/Oe6/Oe6.scaffolds.fa'
     shell:'''
-    	wget http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz | gunzip > {output}
+    	wget -O inputs/Oe6/Oe6.scaffolds.fa.gz http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz 
+    	gunzip inputs/Oe6/Oe6.scaffolds.fa.gz > {output}
 	'''
 	
 rule download_sylv_inputs_blast:
     output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz'  
     shell:'''
-		wget -o inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz http://olivegenome.org/genome_datasets/Olea_europaea%3E1kb_scaffolds.gz
+		wget -O {output} http://olivegenome.org/genome_datasets/Olea_europaea%3E1kb_scaffolds.gz
     '''
 
 rule samtools_index_Oe6:

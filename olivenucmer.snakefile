@@ -4,13 +4,13 @@
 rule download_Oe6_inputs_olive_nucmer:
     output: 'inputs/Oe6/Oe6.scaffolds_olive_nucmer.fa.gz'
     shell:'''
-    wget -O http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz {output}
+    wget -O {output} http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz 
 	'''
 
 rule download_sylv_inputs_olive_nucmer:
     output: 'inputs/sylvestris/Olea_europaea_chromosome+unchromosome.gz'
     shell:'''
-	wget -O http://olivegenome.org/genome_datasets/Olea_europaea_chromosome+unchromosome.gz {output}
+	wget -O {output} http://olivegenome.org/genome_datasets/Olea_europaea_chromosome+unchromosome.gz 
 	'''
 
 rule olive_genomes_nucmer:

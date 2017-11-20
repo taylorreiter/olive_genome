@@ -4,7 +4,8 @@
 rule download_sylv_inputs_busco:
     output: 'inputs/sylvestris/Olea_europaea_all_scaffolds.fa'
     shell:'''
-	wget -O http://olivegenome.org/genome_datasets/Olea_europaea_all_scaffolds.fa.gz | gunzip > {output}
+	wget -O inputs/sylvestris/Olea_europaea_all_scaffolds.fa.gz http://olivegenome.org/genome_datasets/Olea_europaea_all_scaffolds.fa.gz 
+	gunzip inputs/sylvestris/Olea_europaea_all_scaffolds.fa.gz > {output}
 	'''
 
 rule run_busco:

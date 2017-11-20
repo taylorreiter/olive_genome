@@ -4,13 +4,13 @@
 rule download_Oe6_inputs_olive_nucmer:
     output: 'inputs/Oe6/Oe6.scaffolds_olive_nucmer.fa.gz'
     shell:'''
-    wget -O https://osf.io/3mkv8/download?version=1 {output}
+    wget -O {output} https://osf.io/3mkv8/download?version=1 
 	'''
 
 rule download_sylv_inputs_olive_nucmer:
     output: 'inputs/sylvestris/Olea_europaea_chromosome+unchromosome.gz'
     shell:'''
-	wget -O https://osf.io/dzse9/download?version=1 {output}
+	wget -O {output} https://osf.io/dzse9/download?version=1 
 	'''
 
 rule olive_genomes_nucmer:
