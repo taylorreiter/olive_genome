@@ -89,7 +89,7 @@ rule split_sylv_k4_sig:
         'outputs/sylvestris/Olea_europaea_1kb_scaffolds_3.sig'
     input: 'outputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.sig'
     run:
-        with open({input}, 'rt') as sigfp:
+        with open('outputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.sig', 'rt') as sigfp:
             current_sigs = []
             n_sigs = 0
             next_file = 0
