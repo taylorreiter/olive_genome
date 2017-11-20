@@ -17,7 +17,8 @@ rule download_Oe6_genome_k4:
 rule download_sylv_genome_k4:
     output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz'
     shell:'''
-	wget -O {output} https://osf.io/dzse9/download?version=1 
+	wget -O inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz https://osf.io/dzse9/download?version=2
+	gunzip inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz > {output}
 	'''
 
 rule compute_sourmash_signature_k4_Oe6:
@@ -72,54 +73,51 @@ rule suspicious_contigs_Oe6:
             for item in suspicious_column_names:
                 file_handler.write("{}\n".format(item))
 
-rule compute_sourmash_signature_k4_sylv:
-   output: 'outputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.sig'
-   input: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz'
-   conda: "envs/env.yml"
-   shell:'''
-   # compute tetranucleotide frequency of scaffolds
-   sourmash compute -k 4 --scaled 5 --track-abundance --singleton --name-from-first -o {output} {input}
-   '''
 
-rule split_sylv_k4_sig:
+rule split_sylvester:
     output: 
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_0.sig',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_1.sig',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_2.sig',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_3.sig'
-    input: 'outputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.sig'
-    run:
-        with open('outputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.sig', 'rt') as sigfp:
-            current_sigs = []
-            n_sigs = 0
-            next_file = 0
-            for sig in signature.load_signatures(sigfp):
-                current_sigs.append(sig)
-                n_sigs += 1
-                if n_sigs == 5009:
-                    with open('outputs/sylvestris/Olea_europaea_1kb_scaffolds.fa{}.sig'.format(next_file), 'wt') as fp:
-                        signature.save_signatures(current_sigs, fp)
-                        next_file += 1
-                        current_sigs = []
-                    n_sigs = 0
-            with open('outputs/sylvestris/Olea_europaea_1kb_scaffolds.fa{}.sig'.format(next_file), 'wt') as fp:
-                signature.save_signatures(current_sigs, fp)
- 
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.fa',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.fa',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.fa',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.fa'
+    input: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa'
+    conda: "envs/env.yml"
+    shell:'''
+    pyfasta split -n 4 --overlap 0 {input}
+    '''
+
+rule compute_sourmash_signature_k4_sylv:
+    output: 
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.sig',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.sig',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.sig',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.sig'
+    input:
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.fa',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.fa',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.fa',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.fa'
+    conda: "envs/env.yml"
+    shell:'''
+    # compute tetranucleotide frequency of scaffolds
+    sourmash compute -k 4 --scaled 5 --track-abundance --singleton --name-from-first -o {output} {input}
+    '''
+
 rule run_sourmash_compare_sylv_1kb:
     output: 
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_0.comp',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_0.comp.labels.txt',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_1.comp',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_1.comp.labels.txt',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_2.comp',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_2.comp.labels.txt',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_3.comp',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_3.comp.labels.txt'
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.comp',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.comp.labels.txt',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.comp',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.comp.labels.txt',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.comp',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.comp.labels.txt',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.comp',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.comp.labels.txt'
     input: 
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_0.sig',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_1.sig',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_2.sig',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_3.sig'
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.sig',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.sig',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.sig',
+        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.sig'
     conda: "envs/env.yml"
     shell:'''
     sourmash compare -k 4 -o {output} {input} 
