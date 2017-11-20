@@ -75,10 +75,10 @@ rule download_sylv_genome_k4:
 
 rule split_sylvester:
     output: 
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.fa',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.fa',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.fa',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.fa'
+        'inputs/sylvestris/Olea_europaea_1kb_scaffolds.0.fa',
+        'inputs/sylvestris/Olea_europaea_1kb_scaffolds.1.fa',
+        'inputs/sylvestris/Olea_europaea_1kb_scaffolds.2.fa',
+        'inputs/sylvestris/Olea_europaea_1kb_scaffolds.3.fa'
     input: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa'
     conda: "envs/env.yml"
     shell:'''
