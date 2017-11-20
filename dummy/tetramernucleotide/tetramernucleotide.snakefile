@@ -126,14 +126,14 @@ rule run_sourmash_compare_sylv_1kb:
 rule suspicious_contigs_sylv:
     output: 'outputs/sylvestris/suspicious_contigs.txt'
     input: 
-        comp0='outputs/sylvestris/Olea_europaea_1kb_scaffolds_0.comp',
-        lab0='outputs/sylvestris/Olea_europaea_1kb_scaffolds_0.comp.labels.txt',
-        comp1='outputs/sylvestris/Olea_europaea_1kb_scaffolds_1.comp',
-        lab1='outputs/sylvestris/Olea_europaea_1kb_scaffolds_1.comp.labels.txt',
-        comp2='outputs/sylvestris/Olea_europaea_1kb_scaffolds_2.comp',
-        lab2='outputs/sylvestris/Olea_europaea_1kb_scaffolds_2.comp.labels.txt',
-        comp3='outputs/sylvestris/Olea_europaea_1kb_scaffolds_3.comp',
-        lab3='outputs/sylvestris/Olea_europaea_1kb_scaffolds_3.comp.labels.txt'
+        comp0='outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.comp',
+        lab0='outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.comp.labels.txt',
+        comp1='outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.comp',
+        lab1='outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.comp.labels.txt',
+        comp2='outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.comp',
+        lab2='outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.comp.labels.txt',
+        comp3='outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.comp',
+        lab3='outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.comp.labels.txt'
         
     run:
         # load numpy array into python
