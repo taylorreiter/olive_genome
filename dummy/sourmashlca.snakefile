@@ -12,7 +12,7 @@ rule download_Oe6_inputs_lca:
 rule download_sylv_inputs_lca:
     output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds_lca.fa.gz'  
     shell:'''
-		wget -O {output} https://osf.io/dzse9/download?version=1
+		wget -O {output} https://osf.io/dzse9/download?version=2
 	'''
 
 rule compute_sourmash_signature_Oe6_k31:

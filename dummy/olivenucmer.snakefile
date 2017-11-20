@@ -10,7 +10,7 @@ rule download_Oe6_inputs_olive_nucmer:
 rule download_sylv_inputs_olive_nucmer:
     output: 'inputs/sylvestris/Olea_europaea_chromosome+unchromosome.gz'
     shell:'''
-	wget -O {output} https://osf.io/dzse9/download?version=1 
+	wget -O {output} https://osf.io/dzse9/download?version=2
 	'''
 
 rule olive_genomes_nucmer:

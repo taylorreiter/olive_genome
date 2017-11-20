@@ -16,7 +16,7 @@ rule download_Oe6_inputs_blast:
 rule download_sylv_inputs_blast:
     output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz'  
     shell:'''
-		wget -O {output} https://osf.io/dzse9/download?version=1
+		wget -O {output} https://osf.io/dzse9/download?version=2
     '''
 
 rule samtools_index_Oe6:
