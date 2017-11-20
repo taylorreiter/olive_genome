@@ -50,7 +50,7 @@ rule suspicious_contigs_Oe6:
     input: 'outputs/Oe6/Oe6.scaffolds-k4.comp'
     run:
         # load numpy array into python
-        comp = np.load({input})
+        comp = np.load('outputs/Oe6/Oe6.scaffolds-k4.comp')
         # convert to a pandas dataframe
         df = pd.DataFrame(comp)
     
