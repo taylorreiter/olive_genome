@@ -71,7 +71,7 @@ rule grab_suspicious_contigs_sylv:
         genome = 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa',
         fai = 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.fai' 
     run:
-        fasta = pysam.Fastafile(filename = input.genome}) # , filepath_index = input.fai)
+        fasta = pysam.Fastafile(filename = input.genome) # , filepath_index = input.fai)
         f=open(input.contigs,'r')
         for line in f.readlines():
             # strip white space
