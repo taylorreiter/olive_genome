@@ -24,7 +24,7 @@ rule samtools_index_Oe6:
     input: 'inputs/Oe6/Oe6.scaffolds.fa'
     conda: "envs/env.yml"
     shell:'''
-    	samtools faidx Oe6.scaffolds.fa
+    	samtools faidx {input}
     '''
     
 rule expand_sylvestris:
