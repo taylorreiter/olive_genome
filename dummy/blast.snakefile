@@ -97,7 +97,7 @@ rule blast_low_similarity_contigs:
         db='inputs/blast_db/{nt}'
     conda: "envs/env.yml"
     shell:'''
-    	blastn -query {input.contig} -db ~/nt_db/nt -outfmt 11 -out {output}
+    	blastn -query {input.contig} -db inputs/blast_db/nt -outfmt 11 -out {output}
     '''
 
 rule convert_blast_to_tab:
