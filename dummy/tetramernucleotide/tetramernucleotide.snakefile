@@ -67,7 +67,7 @@ rule suspicious_contigs_Oe6:
         # write suspicious labels to a file
         with open(output.Oe6_contigs, 'w') as file_handler:
             for item in suspicious_column_names:
-                file_handler.write("{}\n".format(item))
+                file_handler.write("{}".format(item))
 
 rule download_sylv_genome_k4:
     output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa'
