@@ -4,9 +4,10 @@
 #         'outputs/aur-pul-nucmer/Oe6-APvarEx_filter_coords.txt'
         
 rule download_Oe6_genome_apul:
-    output: 'inputs/Oe6/Oe6.scaffolds_apul.fa.gz'
+    output: 'inputs/Oe6/Oe6.scaffolds_apul.fa'
     shell:'''
-    wget -O {output} http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz
+    wget -O inputs/Oe6/Oe6.scaffolds_apul.fa.gz http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz
+    gunzip inputs/Oe6/Oe6.scaffolds_apul.fa.gz
 	'''
 
 rule download_Apul_genomes:
@@ -14,18 +15,20 @@ rule download_Apul_genomes:
         san='inputs/aur-pul/GCA_001678115.1_ASM167811v1_genomic.fna.gz',
 	    ex150='inputs/aur-pul/GCA_000721785.1_Aureobasidium_pullulans_var._pullulans_EXF-150_assembly_version_1.0_genomic.fna.gz'
 	shell:'''
-	wget -O {output.san} ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/678/115/GCA_001678115.1_ASM167811v1/GCA_001678115.1_ASM167811v1_genomic.fna.gz 
-	wget -O {output.ex150} ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/721/785/GCA_000721785.1_Aureobasidium_pullulans_var._pullulans_EXF-150_assembly_version_1.0/GCA_000721785.1_Aureobasidium_pullulans_var._pullulans_EXF-150_assembly_version_1.0_genomic.fna.gz 
+	wget -O inputs/aur-pul/GCA_001678115.1_ASM167811v1_genomic.fna.gz ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/678/115/GCA_001678115.1_ASM167811v1/GCA_001678115.1_ASM167811v1_genomic.fna.gz 
+	gunzip inputs/aur-pul/GCA_001678115.1_ASM167811v1_genomic.fna.gz
+	wget -O inputs/aur-pul/GCA_000721785.1_Aureobasidium_pullulans_var._pullulans_EXF-150_assembly_version_1.0_genomic.fna.gz ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/721/785/GCA_000721785.1_Aureobasidium_pullulans_var._pullulans_EXF-150_assembly_version_1.0/GCA_000721785.1_Aureobasidium_pullulans_var._pullulans_EXF-150_assembly_version_1.0_genomic.fna.gz
+	gunzip inputs/aur-pul/GCA_000721785.1_Aureobasidium_pullulans_var._pullulans_EXF-150_assembly_version_1.0_genomic.fna.gz 
 	'''
 
 rule apul_san_nucmer:
     output: 'outputs/aur-pul-nucmer/Oe6-APvarSan.delta' 
     input: 
-        san = 'inputs/aur-pul/GCA_001678115.1_ASM167811v1_genomic.fna.gz',
-        Oe6 = 'inputs/Oe6/Oe6.scaffolds_apul.fa.gz'
+        san = 'inputs/aur-pul/GCA_001678115.1_ASM167811v1_genomic.fna',
+        Oe6 = 'inputs/Oe6/Oe6.scaffolds_apul.fa'
     conda: "envs/env.yml"
     shell:'''
-    nucmer --mum {input.Oe6} {input.san} -p Oe6-APvarSan
+    nucmer --mum {input.Oe6} {input.san} -p outputs/aur-pul-nucmer/Oe6-APvarSan
     '''
 
 rule apul_san_nucmer_filter:
@@ -47,11 +50,11 @@ rule apul_san_nucmer_coords:
 rule apul_exf150_nucmer:
     output: 'outputs/aur-pul-nucmer/Oe6-APvarEx.delta'
     input:
-        ex150 = 'inputs/aur-pul/GCA_000721785.1_Aureobasidium_pullulans_var._pullulans_EXF-150_assembly_version_1.0_genomic.fna.gz',
-        Oe6 = 'inputs/Oe6/Oe6.scaffolds_apul.fa.gz'
+        ex150 = 'inputs/aur-pul/GCA_000721785.1_Aureobasidium_pullulans_var._pullulans_EXF-150_assembly_version_1.0_genomic.fna',
+        Oe6 = 'inputs/Oe6/Oe6.scaffolds_apul.fa'
     conda: "envs/env.yml"
     shell:'''
-    nucmer --mum {input.Oe6} {input.ex150} -p Oe6-APvarEx
+    nucmer --mum {input.Oe6} {input.ex150} -p utputs/aur-pul-nucmer/Oe6-APvarEx
     '''
 
 rule apul_exf150_nucmer_filter:

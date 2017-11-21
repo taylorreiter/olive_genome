@@ -2,25 +2,27 @@
 #    input: 'outputs/olive_genomes_nucmer/sylvester_santander_nucmer_filter_coords.txt'
     
 rule download_Oe6_inputs_olive_nucmer:
-    output: 'inputs/Oe6/Oe6.scaffolds_olive_nucmer.fa.gz'
+    output: 'inputs/Oe6/Oe6.scaffolds_olive_nucmer.fa'
     shell:'''
-    wget -O {output} http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz 
+    wget -O inputs/Oe6/Oe6.scaffolds_olive_nucmer.fa.gz http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz 
+    gunzip inputs/Oe6/Oe6.scaffolds_olive_nucmer.fa.gz
 	'''
 
 rule download_sylv_inputs_olive_nucmer:
-    output: 'inputs/sylvestris/Olea_europaea_chromosome+unchromosome.gz'
+    output: 'inputs/sylvestris/Olea_europaea_chromosome+unchromosome.fa'
     shell:'''
-	wget -O {output} http://olivegenome.org/genome_datasets/Olea_europaea_chromosome+unchromosome.gz 
+	wget -O inputs/sylvestris/Olea_europaea_chromosome+unchromosome.fa.gz http://olivegenome.org/genome_datasets/Olea_europaea_chromosome+unchromosome.gz 
+	gunzip inputs/sylvestris/Olea_europaea_chromosome+unchromosome.fa.gz
 	'''
 
 rule olive_genomes_nucmer:
     output: 'outputs/olive_genomes_nucmer/sylvester_santander_nucmer.delta'
     input:
-        sylv='inputs/sylvestris/Olea_europaea_chromosome+unchromosome.gz',
-        Oe6='inputs/Oe6/Oe6.scaffolds_olive_nucmer.fa.gz'
+        sylv='inputs/sylvestris/Olea_europaea_chromosome+unchromosome',
+        Oe6='inputs/Oe6/Oe6.scaffolds_olive_nucmer.fa'
     conda: "envs/env.yml"
     shell:'''
-    nucmer --mum {input.sylv} {input.Oe6} -p sylvester_santander_nucmer
+    nucmer --mum {input.sylv} {input.Oe6} -p outputs/olive_genomes_nucmer/sylvester_santander_nucmer
     '''
     
 rule olive_genome_nucmer_filter:
