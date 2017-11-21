@@ -10,7 +10,7 @@ rule download_Oe6_inputs_blast:
     output: 'inputs/Oe6/Oe6.scaffolds.fa'
     shell:'''
     	wget -O inputs/Oe6.scaffolds.fa.gz https://osf.io/3mkv8/download?version=1
-    	gunzip inputs/Oe6.scaffolds.fa.gz > {output}
+    	gunzip inputs/Oe6.scaffolds.fa.gz
 	'''
 	
 rule download_sylv_inputs_blast:
