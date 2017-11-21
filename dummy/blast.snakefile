@@ -92,10 +92,12 @@ rule install_blast_db:
     
 rule blast_low_similarity_contigs: 
     output: 'outputs/{genome}/blast/asn/{contig_names}.asn'
-    input: 'outputs/{genome}/suspicious_contigs/{contig_names}.fa'
+    input: 
+        contig='outputs/{genome}/suspicious_contigs/{contig_names}.fa',
+        db='inputs/blast_db/{nt}'
     conda: "envs/env.yml"
     shell:'''
-    	blastn -query {input} -db ~/nt_db/nt -outfmt 11 -out {output}
+    	blastn -query {input.contig} -db ~/nt_db/nt -outfmt 11 -out {output}
     '''
 
 rule convert_blast_to_tab:
