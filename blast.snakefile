@@ -10,7 +10,7 @@ rule download_Oe6_inputs_blast:
     output: 'inputs/Oe6/Oe6.scaffolds.fa'
     shell:'''
     	wget -O inputs/Oe6/Oe6.scaffolds.fa.gz http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz 
-    	gunzip inputs/Oe6/Oe6.scaffolds.fa.gz > {output}
+    	gunzip inputs/Oe6/Oe6.scaffolds.fa.gz
 	'''
 	
 rule download_sylv_inputs_blast:
@@ -53,8 +53,8 @@ rule grab_suspicious_contigs_Oe6:
         genome = 'inputs/Oe6/Oe6.scaffolds.fa',
         fai = 'inputs/Oe6/Oe6.scaffolds.fa.fai' 
     run:
-        fasta = pysam.Fastafile(filename = {input.genome}) # , filepath_index = {input.fai})
-        f=open({input.contigs},'r')
+        fasta = pysam.Fastafile(filename = input.genome) # , filepath_index = input.fai)
+        f=open(input.contigs,'r')
         for line in f.readlines():
             # strip white space
             line = line.strip()
@@ -71,8 +71,8 @@ rule grab_suspicious_contigs_sylv:
         genome = 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa',
         fai = 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.fai' 
     run:
-        fasta = pysam.Fastafile(filename = {input.genome}) # , filepath_index = {input.fai})
-        f=open({input.contigs},'r')
+        fasta = pysam.Fastafile(filename = input.genome) # , filepath_index = input.fai)
+        f=open(input.contigs,'r')
         for line in f.readlines():
             # strip white space
             line = line.strip()

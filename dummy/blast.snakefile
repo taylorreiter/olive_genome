@@ -53,8 +53,8 @@ rule grab_suspicious_contigs_Oe6:
         genome = 'inputs/Oe6/Oe6.scaffolds.fa',
         fai = 'inputs/Oe6/Oe6.scaffolds.fa.fai' 
     run:
-        fasta = pysam.Fastafile(filename = {input.genome}) # , filepath_index = {input.fai})
-        f=open({input.contigs},'r')
+        fasta = pysam.Fastafile(filename = input.genome) # , filepath_index = input.fai)
+        f=open(input.contigs,'r')
         for line in f.readlines():
             # strip white space
             line = line.strip()
@@ -71,8 +71,8 @@ rule grab_suspicious_contigs_sylv:
         genome = 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa',
         fai = 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.fai' 
     run:
-        fasta = pysam.Fastafile(filename = {input.genome}) # , filepath_index = {input.fai})
-        f=open({input.contigs},'r')
+        fasta = pysam.Fastafile(filename = input.genome}) # , filepath_index = input.fai)
+        f=open(input.contigs,'r')
         for line in f.readlines():
             # strip white space
             line = line.strip()
