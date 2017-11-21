@@ -193,4 +193,4 @@ rule suspicious_contigs_sylv:
         # write suspicious labels to a file
         with open(output.file0, 'w') as file_handler:
             for item in suspicious_column_names:
-                file_handler.write("{}\n".format(item))
+                file_handler.write("{}".format(item))

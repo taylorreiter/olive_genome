@@ -70,7 +70,7 @@ rule suspicious_contigs_Oe6:
         # write suspicious labels to a file
         with open({output}, 'w') as file_handler:
             for item in suspicious_column_names:
-                file_handler.write("{}\n".format(item))
+                file_handler.write("{}".format(item))
 
 rule compute_sourmash_signature_k4_sylv:
    output: 'outputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.sig'
@@ -186,4 +186,4 @@ rule suspicious_contigs_sylv:
         # write suspicious labels to a file
         with open({output}, 'w') as file_handler:
             for item in suspicious_column_names:
-                file_handler.write("{}\n".format(item))
+                file_handler.write("{}".format(item))
