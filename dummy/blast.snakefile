@@ -96,7 +96,7 @@ rule blast_low_similarity_contigs:
     output: 'outputs/{genome}/blast/asn/{contig_names}.asn'
     input: 
         contig='outputs/{genome}/suspicious_contigs/{contig_names}.fa',
-        db='inputs/blast_db/{num}'
+        db='inputs/blast_db/nt.{num}.tar.gz'
     conda: "envs/env.yml"
     shell:'''
     	blastn -query {input.contig} -db inputs/blast_db/nt -outfmt 11 -out {output}
