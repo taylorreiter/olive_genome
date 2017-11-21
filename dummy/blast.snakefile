@@ -1,5 +1,7 @@
 import pandas as pd
 import pysam
+
+nt =  list(range(1, 53))
                         
 # rule all:
 #    input:
@@ -81,8 +83,6 @@ rule grab_suspicious_contigs_sylv:
             with open(f"outputs/sylvestris/suspicious_contigs/{line}.fa", "w") as text_file:
                 # write content of fasta file with appropriate header and sequence
                 text_file.write(f">{line}\n{fasta_of_interest}")    
-
-nt =  list(range(1, 53))
 
 rule install_blast_db:
     output: 'inputs/blast_db/{nt}'
