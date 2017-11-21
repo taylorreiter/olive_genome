@@ -82,22 +82,22 @@ rule grab_suspicious_contigs_sylv:
                 # write content of fasta file with appropriate header and sequence
                 text_file.write(f">{line}\n{fasta_of_interest}")    
 
+nt =  list(range(1, 53))
+
 rule install_blast_db:
-    output: dynamic('inputs/blast_db/{nt}')
+    output: 'inputs/blast_db/{nt}'
     conda: "envs/env.yml"
     shell:'''
-    	wget 'ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.*.tar.gz'
-    	cat nt.*.tar.gz | tar -zxvi -f - -C .
+        cd inputs/blast_db/
+    	update_blastdb.pl --passive --decompress nt
     '''
     
 rule blast_low_similarity_contigs: 
     output: 'outputs/{genome}/blast/asn/{contig_names}.asn'
-    input: 
-        contig='outputs/{genome}/suspicious_contigs/{contig_names}.fa',
-        db='inputs/blast_db/{nt}'
+    input: 'outputs/{genome}/suspicious_contigs/{contig_names}.fa'
     conda: "envs/env.yml"
     shell:'''
-    	blastn -query {input.contig} -db inputs/blast_db/nt -outfmt 11 -out {output}
+    	blastn -query {input} -db inputs/blast_db/nt -outfmt 11 -out {output}
     '''
 
 rule convert_blast_to_tab:
