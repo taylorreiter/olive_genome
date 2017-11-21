@@ -14,6 +14,5 @@ rule all:
         'outputs/olive_genomes_nucmer/sylvester_santander_nucmer_filter_coords.txt',
         'outputs/aur-pul-nucmer/Oe6-APvarSan_filter_coords.txt',
         'outputs/aur-pul-nucmer/Oe6-APvarEx_filter_coords.txt',
-         dynamic('inputs/blast_db/{nt}'),
         'outputs/busco/run_wild_olive_busco',
         'outputs/Results_*_orthofinder'
