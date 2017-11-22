@@ -123,3 +123,11 @@ rule convert_blast_to_tab:
     shell:'''
     	blast_formatter -archive {input} -outfmt 6 -out {output}
     '''
+
+rule convert_blast_to_tab:
+    output: 'outputs/sylvestris/blast/tab/{contig_names_sylv}.tab'
+    input: 'outputs/sylvestris/blast/asn/{contig_names_sylv}.asn'
+    conda: "envs/env.yml"
+    shell:'''
+    	blast_formatter -archive {input} -outfmt 6 -out {output}
+    '''
