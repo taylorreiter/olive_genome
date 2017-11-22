@@ -89,8 +89,9 @@ rule grab_suspicious_contigs_sylv:
 num = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51']
 
 rule install_blast_db:
-    output: expand('nt.{n}.tar.gz', n = num)
+    output: expand('inputs/blast_db/nt.{n}.tar.gz', n = num)
     shell:'''
+        cd inputs/blast_db
     	wget 'ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.*.tar.gz'
     	cat nt.*.tar.gz | tar -zxvi -f - -C .
     '''
@@ -99,7 +100,7 @@ rule blast_low_similarity_contigs:
     output: 'outputs/{genome}/blast/asn/{contig_names}.asn'
     input: 
         contig='outputs/{genome}/suspicious_contigs/{contig_names}.fa',
-        db=expand('nt.{n}.tar.gz', n = num)
+        db=expand('inputs/blast_db/nt.{n}.tar.gz', n = num)
     conda: "envs/env.yml"
     shell:'''
     	blastn -query {input.contig} -db inputs/blast_db/nt -outfmt 11 -out {output}
