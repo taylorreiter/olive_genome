@@ -4,7 +4,7 @@ rule install_blast_db:
     output: 'nt.{num}.tar.gz'
     conda: "blast.yml"
     shell:'''
-        cd inputs/blast_db/
-    	update_blastdb.pl --passive --decompress nt
+    	wget 'ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.*.tar.gz'
+    	cat nt.*.tar.gz | tar -zxvi -f - -C .
     '''
    
