@@ -117,8 +117,8 @@ rule blast_low_similarity_contigs_sylv:
     '''
 
 rule convert_blast_to_tab:
-    output: 'outputs/{genome}/blast/tab/{contig_names}.tab'
-    input: 'outputs/{genome}/blast/asn/{contig_names}.asn'
+    output: 'outputs/Oe6/blast/tab/{contig_names}.tab'
+    input: 'outputs/Oe6/blast/asn/{contig_names}.asn'
     conda: "envs/env.yml"
     shell:'''
     	blast_formatter -archive {input} -outfmt 6 -out {output}
