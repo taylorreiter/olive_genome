@@ -88,7 +88,16 @@ rule install_blast_db:
     output: expand('inputs/blast_db/nt.{n}.tar.gz', n = num)
     shell:'''
         cd inputs/blast_db
-    	wget 'ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.*.tar.gz'
+    	wget 'ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.00.tar.gz'
+    	wget 'ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.01.tar.gz'
+    	wget 'ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.02.tar.gz'
+    	wget 'ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.03.tar.gz'
+    	wget 'ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.04.tar.gz'
+    	wget 'ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.05.tar.gz'
+    	wget 'ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.48.tar.gz'
+    	wget 'ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.49.tar.gz'
+    	wget 'ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.50.tar.gz'
+    	wget 'ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.51.tar.gz'
     	cat nt.*.tar.gz | tar -zxvi -f - -C .
     '''
    
