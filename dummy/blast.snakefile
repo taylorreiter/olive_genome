@@ -109,7 +109,7 @@ rule blast_low_similarity_contigs_Oe6:
 rule blast_low_similarity_contigs_sylv: 
     output: 'outputs/sylvestris/blast/asn/{contig_names_sylv}.asn'
     input: 
-        contig='outputs/sylvestris/suspicious_contigs/{contig_namess_sylv}.fa',
+        contig='outputs/sylvestris/suspicious_contigs/{contig_names_sylv}.fa',
         db=expand('inputs/blast_db/nt.{n}.tar.gz', n = num)
     conda: "envs/env.yml"
     shell:'''
