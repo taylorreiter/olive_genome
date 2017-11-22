@@ -1,7 +1,5 @@
 import pandas as pd
 import pysam
-
-num = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51']
                         
 # rule all:
 #    input:
@@ -84,19 +82,15 @@ rule grab_suspicious_contigs_sylv:
                 # write content of fasta file with appropriate header and sequence
                 text_file.write(f">{line}\n{fasta_of_interest}")    
 
-rule install_blast_db:
-    output: 'inputs/blast_db/nt.{num}.tar.gz'
-    conda: "envs/env.yml"
-    shell:'''
-        cd inputs/blast_db/
-    	update_blastdb.pl --passive --decompress nt
-    '''
-    
+subworkflow make_blast_db:
+    workdir: "inputs/blast_db"
+    snakefile: "inputs/blast_db/blast_db.snakefile"
+ 
 rule blast_low_similarity_contigs: 
     output: 'outputs/{genome}/blast/asn/{contig_names}.asn'
     input: 
         contig='outputs/{genome}/suspicious_contigs/{contig_names}.fa',
-        db='inputs/blast_db/nt.{num}.tar.gz'
+        db=make_blast_db('inputs/blast_db/nt.52.tar.gz')
     conda: "envs/env.yml"
     shell:'''
     	blastn -query {input.contig} -db inputs/blast_db/nt -outfmt 11 -out {output}
