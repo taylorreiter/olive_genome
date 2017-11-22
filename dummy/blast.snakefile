@@ -53,7 +53,7 @@ rule grab_suspicious_contigs_Oe6:
         genome = 'inputs/Oe6/Oe6.scaffolds.fa',
         fai = 'inputs/Oe6/Oe6.scaffolds.fa.fai' 
     run:
-        fasta = pysam.Fastafile(filename = input.genome) # , filepath_index = input.fai)
+        fasta = pysam.Fastafile(filename = input.genome)
         f=open(input.contigs,'r')
         for line in f.readlines():
             # strip white space
@@ -65,13 +65,13 @@ rule grab_suspicious_contigs_Oe6:
                 text_file.write(f">{line}\n{fasta_of_interest}")    
 
 rule grab_suspicious_contigs_sylv:
-    output: dynamic('outputs/sylvestris/suspicious_contigs/{contig_names}.fa')
+    output: dynamic('outputs/sylvestris/suspicious_contigs/{contig_names_sylv}.fa')
     input: 
         contigs = tetramernucleotide_clustering('outputs/sylvestris/suspicious_contigs.txt'),
         genome = 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa',
         fai = 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.fai' 
     run:
-        fasta = pysam.Fastafile(filename = input.genome) # , filepath_index = input.fai)
+        fasta = pysam.Fastafile(filename = input.genome)
         f=open(input.contigs,'r')
         for line in f.readlines():
             # strip white space
@@ -96,10 +96,20 @@ rule install_blast_db:
     	cat nt.*.tar.gz | tar -zxvi -f - -C .
     '''
    
-rule blast_low_similarity_contigs: 
-    output: 'outputs/{genome}/blast/asn/{contig_names}.asn'
+rule blast_low_similarity_contigs_Oe6: 
+    output: 'outputs/Oe6/blast/asn/{contig_names}.asn'
     input: 
         contig='outputs/{genome}/suspicious_contigs/{contig_names}.fa',
+        db=expand('inputs/blast_db/nt.{n}.tar.gz', n = num)
+    conda: "envs/env.yml"
+    shell:'''
+    	blastn -query {input.contig} -db inputs/blast_db/nt -outfmt 11 -out {output}
+    '''
+
+rule blast_low_similarity_contigs_sylv: 
+    output: 'outputs/sylvestris/blast/asn/{contig_names_sylv}.asn'
+    input: 
+        contig='outputs/sylvestris/suspicious_contigs/{contig_namess_sylv}.fa',
         db=expand('inputs/blast_db/nt.{n}.tar.gz', n = num)
     conda: "envs/env.yml"
     shell:'''
