@@ -99,7 +99,7 @@ rule install_blast_db:
 rule blast_low_similarity_contigs_Oe6: 
     output: 'outputs/Oe6/blast/asn/{contig_names}.asn'
     input: 
-        contig='outputs/{genome}/suspicious_contigs/{contig_names}.fa',
+        contig='outputs/Oe6/suspicious_contigs/{contig_names}.fa',
         db=expand('inputs/blast_db/nt.{n}.tar.gz', n = num)
     conda: "envs/env.yml"
     shell:'''
