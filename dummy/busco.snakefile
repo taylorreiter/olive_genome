@@ -22,7 +22,7 @@ rule run_busco:
     output: 'outputs/busco/run_wild_olive_busco'
     input: 
         genome='inputs/sylvestris/Olea_europaea_all_scaffolds.fa',
-        busco_db='inputs/busco/embryophyta_odb9/
+        busco_db='inputs/busco/embryophyta_odb9/'
     conda:  "envs/busco.yml"
     shell:'''
 	python busco/scripts/run_BUSCO.py -i {input.genome} -o wild_olive_busco -l {input.busco_db} -m geno
