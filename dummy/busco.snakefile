@@ -12,7 +12,6 @@ rule download_busco_db:
     output: 
         db='inputs/busco/embryophyta_odb9/',
         tgz='inputs/busco/embryophyta_odb9.tar.gz'
-    conda:  "envs/busco.yml"
     shell:'''
     wget -O {output.tgz} http://busco.ezlab.org/datasets/embryophyta_odb9.tar.gz
 	mkdir -p {output.db}
