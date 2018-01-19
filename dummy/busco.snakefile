@@ -10,7 +10,7 @@ rule download_sylv_inputs_busco:
 
 rule download_emb_odb9:
     output: 
-        untar='inputs/busco/embryophyta_odb9',
+        untar=dynamic('inputs/busco/embryophyta_odb9/{filenames}'),
         tar='inputs/busco/embryophyta_odb9.tar.gz'
     conda:  "envs/busco.yml"
     shell:'''
