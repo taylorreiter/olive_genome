@@ -10,7 +10,7 @@ rule download_sylv_inputs_busco:
 
 rule download_emb_odb9:
     output: 
-        untar='inputs/busco/embryophyta_odb9'
+        untar='inputs/busco/embryophyta_odb9',
         tar='inputs/busco/embryophyta_odb9.tar.gz'
     conda:  "envs/busco.yml"
     shell:'''
@@ -20,7 +20,7 @@ rule download_emb_odb9:
 rule run_busco:
     output: 'outputs/busco/run_wild_olive_busco'
     input: 
-        genome='inputs/sylvestris/Olea_europaea_all_scaffolds.fa'
+        genome='inputs/sylvestris/Olea_europaea_all_scaffolds.fa',
         busco_db='inputs/busco/embryophyta_odb9'
     conda:  "envs/busco.yml"
     shell:'''
