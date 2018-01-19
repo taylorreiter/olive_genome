@@ -10,12 +10,13 @@ rule download_sylv_inputs_busco:
 
 rule download_emb_odb9:
     output: 
-        untar=dynamic('inputs/busco/embryophyta_odb9/{filenames}'),
-        tar='inputs/busco/embryophyta_odb9.tar.gz'
+        db='inputs/busco/embryophyta_odb9/',
+        tgz='inputs/busco/embryophyta_odb9.tar.gz'
     conda:  "envs/busco.yml"
     shell:'''
-	wget -O {output.tar} http://busco.ezlab.org/datasets/embryophyta_odb9.tar.gz
-	tar xvf {output.tar}
+wget -O {output.tar} http://busco.ezlab.org/datasets/embryophyta_odb9.tar.gz
+	mkdir -p {output.db}
+    tar -xf {output.tgz} --strip-components=1 -C {output.db}
     '''
 rule run_busco:
     output: 'outputs/busco/run_wild_olive_busco'
@@ -24,6 +25,6 @@ rule run_busco:
         busco_db='inputs/busco/embryophyta_odb9'
     conda:  "envs/busco.yml"
     shell:'''
-	python busco/scripts/run_BUSCO.py -i {input.genome} -o wild_olive_busco -l {input.busco_d} -m geno
+	python busco/scripts/run_BUSCO.py -i {input.genome} -o wild_olive_busco -l {input.busco_db} -m geno
     '''
     
