@@ -8,13 +8,13 @@ rule download_sylv_inputs_busco:
 	gunzip inputs/sylvestris/Olea_europaea_all_scaffolds.fa.gz > {output}
 	'''
 
-rule download_emb_odb9:
+rule download_busco_db:
     output: 
         db='inputs/busco/embryophyta_odb9/',
         tgz='inputs/busco/embryophyta_odb9.tar.gz'
     conda:  "envs/busco.yml"
     shell:'''
-wget -O {output.tar} http://busco.ezlab.org/datasets/embryophyta_odb9.tar.gz
+    wget -O {output.tgz} http://busco.ezlab.org/datasets/embryophyta_odb9.tar.gz
 	mkdir -p {output.db}
     tar -xf {output.tgz} --strip-components=1 -C {output.db}
     '''
