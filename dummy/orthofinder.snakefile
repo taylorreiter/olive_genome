@@ -21,6 +21,6 @@ rule run_orthofinder:
     conda: 'envs/env.yml'
     shell:'''
     cd outputs
-	orthofinder -f inputs/peptides -og
+	orthofinder -f ../inputs/peptides -og
 	'''
     
