@@ -19,11 +19,26 @@ rule download_sylv_inputs_orthofinder:
 rule run_orthofinder:
     output: 'outputs/orthofinder/'
     input: 
-        'inputs/peptides/Olea_europaea.gene.pep.final.chr_and_chrUn_noTE.fa.gz',
+        'inputs/peptides/Olea_europaea.gene.pep.final.chr_and_chrUn_noTE.fa',
         'inputs/peptides/OE6A.pep.fa'
     conda: 'envs/env.yml'
     shell:'''
     cd outputs/orthofinder
 	orthofinder -f ../../inputs/peptides -og
 	'''
-    
+# 
+# 
+# Output files
+# Orthogroups.csv
+# Orthogroups.txt
+# Orthogroups_UnassignedGenes.csv
+# Orthogroups.GeneCount.csv
+# Statistics_Overall.csv 
+# Statistics_PerSpecies.csv
+# WorkingDirectory/Blast0_0.txt                           
+# clusters_OrthoFinder_v1.1.10_I1.5.txt_id_pairs.txt  
+# SequenceIDs.txt  
+# SpeciesIDs.txt
+# clusters_OrthoFinder_v1.1.10_I1.5.txt  
+# OrthoFinder_v1.1.10_graph.txt                       
+# Species0.fa
