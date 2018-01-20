@@ -15,30 +15,32 @@ rule download_sylv_inputs_orthofinder:
 	wget -O {output.gz} https://osf.io/t9f4s/download?version=1 
 	gunzip -c {output.gz} > {output.uncmp}
 	'''
-    
+
+# Orthofinder does not allow use specified output directory. 
+# Automatically places a directory with the results under the directory in which the protein fasta sequences are listed. 
+# Additionally, the output directory is always named Results_*, where the asterisk is the date in the United Kingdom at the moment the program is being run.
+# The format for the date is Mon_Day (i.e. Jan_20). 
+# The correct date therefore needs to be changed each time a run is made.  
+# Date is specified as a variable in the master Snakefile. 
 rule run_orthofinder:
-    output: 'outputs/orthofinder/'
+    output: 
+        'input/peptides/Results_{date}/Orthogroups.csv',
+        'input/peptides/Results_{date}/Orthogroups.txt',
+        'input/peptides/Results_{date}/Orthogroups_UnassignedGenes.csv',
+        'input/peptides/Results_{date}/Orthogroups.GeneCount.csv',
+        'input/peptides/Results_{date}/Statistics_Overall.csv',
+        'input/peptides/Results_{date}/Statistics_PerSpecies.csv',
+        'input/peptides/Results_{date}/WorkingDirectory/Blast0_0.txt',
+        'input/peptides/Results_{date}/WorkingDirectory/clusters_OrthoFinder_v1.1.10_I1.5.txt_id_pairs.txt',
+        'input/peptides/Results_{date}/WorkingDirectory/SequenceIDs.txt',
+        'input/peptides/Results_{date}/WorkingDirectory/SpeciesIDs.txt',
+        'input/peptides/Results_{date}/WorkingDirectory/clusters_OrthoFinder_v1.1.10_I1.5.txt',
+        'input/peptides/Results_{date}/WorkingDirectory/OrthoFinder_v1.1.10_graph.txt',
+        'input/peptides/Results_{date}/WorkingDirectory/Species0.fa'        
     input: 
         'inputs/peptides/Olea_europaea.gene.pep.final.chr_and_chrUn_noTE.fa',
         'inputs/peptides/OE6A.pep.fa'
     conda: 'envs/env.yml'
     shell:'''
-    cd outputs/orthofinder
-	orthofinder -f ../../inputs/peptides -og
+	orthofinder -f inputs/peptides -og
 	'''
-# 
-# 
-# Output files
-# Orthogroups.csv
-# Orthogroups.txt
-# Orthogroups_UnassignedGenes.csv
-# Orthogroups.GeneCount.csv
-# Statistics_Overall.csv 
-# Statistics_PerSpecies.csv
-# WorkingDirectory/Blast0_0.txt                           
-# clusters_OrthoFinder_v1.1.10_I1.5.txt_id_pairs.txt  
-# SequenceIDs.txt  
-# SpeciesIDs.txt
-# clusters_OrthoFinder_v1.1.10_I1.5.txt  
-# OrthoFinder_v1.1.10_graph.txt                       
-# Species0.fa
