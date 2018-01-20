@@ -8,20 +8,22 @@ rule download_Oe6_inputs_orthofinder:
 	'''
 
 rule download_sylv_inputs_orthofinder:
-    output: 'inputs/peptides/Olea_europaea.gene.pep.final.chr_and_chrUn_noTE.fa.gz'
+    output: 
+        gz='inputs/peptides/Olea_europaea.gene.pep.final.chr_and_chrUn_noTE.fa.gz',
+        uncmp='inputs/peptides/Olea_europaea.gene.pep.final.chr_and_chrUn_noTE.fa'
     shell:'''
-	wget -O {output} https://osf.io/t9f4s/download?version=1 
+	wget -O {output.gz} https://osf.io/t9f4s/download?version=1 
+	gunzip -c {output.gz} > {output.uncmp}
 	'''
     
 rule run_orthofinder:
-    output: 'outputs/Results_*_orthofinder'
+    output: dynamic('outputs/{results_orthofinder}')
     input: 
         'inputs/peptides/Olea_europaea.gene.pep.final.chr_and_chrUn_noTE.fa.gz',
         'inputs/peptides/OE6A.pep.fa'
     conda: 'envs/env.yml'
     shell:'''
     cd outputs
-    orthofinder -h
 	orthofinder -f ../inputs/peptides -og
 	'''
     
