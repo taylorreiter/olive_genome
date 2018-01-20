@@ -17,13 +17,13 @@ rule download_sylv_inputs_orthofinder:
 	'''
     
 rule run_orthofinder:
-    output: dynamic('outputs/{results_orthofinder}')
+    output: dynamic('outputs/orthofinder/{orthofinder_dir}')
     input: 
         'inputs/peptides/Olea_europaea.gene.pep.final.chr_and_chrUn_noTE.fa.gz',
         'inputs/peptides/OE6A.pep.fa'
     conda: 'envs/env.yml'
     shell:'''
-    cd outputs
-	orthofinder -f ../inputs/peptides -og
+    cd outputs/orthofinder
+	orthofinder -f ../../inputs/peptides -og
 	'''
     
