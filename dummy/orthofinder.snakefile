@@ -29,14 +29,14 @@ rule run_orthofinder:
         'input/peptides/Results_{date}/Orthogroups_UnassignedGenes.csv',
         'input/peptides/Results_{date}/Orthogroups.GeneCount.csv',
         'input/peptides/Results_{date}/Statistics_Overall.csv',
-        'input/peptides/Results_{date}/Statistics_PerSpecies.csv',
-        'input/peptides/Results_{date}/WorkingDirectory/Blast0_0.txt',
-        'input/peptides/Results_{date}/WorkingDirectory/clusters_OrthoFinder_v1.1.10_I1.5.txt_id_pairs.txt',
-        'input/peptides/Results_{date}/WorkingDirectory/SequenceIDs.txt',
-        'input/peptides/Results_{date}/WorkingDirectory/SpeciesIDs.txt',
-        'input/peptides/Results_{date}/WorkingDirectory/clusters_OrthoFinder_v1.1.10_I1.5.txt',
-        'input/peptides/Results_{date}/WorkingDirectory/OrthoFinder_v1.1.10_graph.txt',
-        'input/peptides/Results_{date}/WorkingDirectory/Species0.fa'        
+        'input/peptides/Results_{date}/Statistics_PerSpecies.csv' #,
+        #'input/peptides/Results_{date}/WorkingDirectory/Blast0_0.txt',
+        #'input/peptides/Results_{date}/WorkingDirectory/clusters_OrthoFinder_v1.1.10_I1.5.txt_id_pairs.txt',
+        #'input/peptides/Results_{date}/WorkingDirectory/SequenceIDs.txt',
+        #'input/peptides/Results_{date}/WorkingDirectory/SpeciesIDs.txt',
+        #'input/peptides/Results_{date}/WorkingDirectory/clusters_OrthoFinder_v1.1.10_I1.5.txt',
+        #'input/peptides/Results_{date}/WorkingDirectory/OrthoFinder_v1.1.10_graph.txt',
+        #'input/peptides/Results_{date}/WorkingDirectory/Species0.fa'        
     input: 
         'inputs/peptides/Olea_europaea.gene.pep.final.chr_and_chrUn_noTE.fa',
         'inputs/peptides/OE6A.pep.fa'
