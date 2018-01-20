@@ -47,7 +47,7 @@ rule run_sourmash_LCA_Oe6:
         sig='outputs/Oe6/Oe6.scaffolds-k31.fa.sig'
     conda: "envs/sourmash-lca.yml"
     shell:'''
-    	sourmash lca classify -k 31 --db {input.genbank} --query {input.sig} -o {output}
+    	sourmash lca classify --db {input.genbank} --query {input.sig} -o {output}
     '''
 
 rule run_sourmash_LCA_sylv:
@@ -57,5 +57,5 @@ rule run_sourmash_LCA_sylv:
         sig='outputs/sylvestris/Olea_europaea_1kb_scaffolds-k31.fa.sig'
     conda: "envs/sourmash-lca.yml"
     shell:'''
-    sourmash lca classify -k 31 --db {input.genbank} --query {input.sig} -o {output}
+    sourmash lca classify --db {input.genbank} --query {input.sig} -o {output}
     '''
