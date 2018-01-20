@@ -24,12 +24,12 @@ rule download_sylv_inputs_orthofinder:
 # Date is specified as a variable in the master Snakefile. 
 rule run_orthofinder:
     output: 
-        'input/peptides/Results_{date}/Orthogroups.csv',
-        'input/peptides/Results_{date}/Orthogroups.txt',
-        'input/peptides/Results_{date}/Orthogroups_UnassignedGenes.csv',
-        'input/peptides/Results_{date}/Orthogroups.GeneCount.csv',
-        'input/peptides/Results_{date}/Statistics_Overall.csv',
-        'input/peptides/Results_{date}/Statistics_PerSpecies.csv' #,
+        'inputs/peptides/Results_{date}/Orthogroups.csv',
+        'inputs/peptides/Results_{date}/Orthogroups.txt',
+        'inputs/peptides/Results_{date}/Orthogroups_UnassignedGenes.csv',
+        'inputs/peptides/Results_{date}/Orthogroups.GeneCount.csv',
+        'inputs/peptides/Results_{date}/Statistics_Overall.csv',
+        'inputs/peptides/Results_{date}/Statistics_PerSpecies.csv' #,
         #'input/peptides/Results_{date}/WorkingDirectory/Blast0_0.txt',
         #'input/peptides/Results_{date}/WorkingDirectory/clusters_OrthoFinder_v1.1.10_I1.5.txt_id_pairs.txt',
         #'input/peptides/Results_{date}/WorkingDirectory/SequenceIDs.txt',
