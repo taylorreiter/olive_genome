@@ -14,12 +14,6 @@ rule download_Oe6_genome_k4:
     wget -O {output} http://denovo.cnag.cat/genomes/olive/download/Oe6/Oe6.scaffolds.fa.gz 
 	'''
 
-rule download_sylv_genome_k4:
-    output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz'
-    shell:'''
-	wget -O {output} http://olivegenome.org/genome_datasets/Olea_europaea%3E1kb_scaffolds.gz 
-	'''
-
 rule compute_sourmash_signature_k4_Oe6:
    output: 'outputs/Oe6/Oe6.scaffolds-k4.fa.sig'
    input: 'inputs/Oe6/Oe6.scaffolds_k4.fa.gz'
@@ -46,16 +40,19 @@ rule plot_compare_Oe6:
     '''
 
 rule suspicious_contigs_Oe6:
-    output: 'outputs/Oe6/suspicious_contigs.txt'
-    input: 'outputs/Oe6/Oe6.scaffolds-k4.comp'
+    output: 
+        Oe6_contigs='outputs/Oe6/suspicious_contigs.txt'
+    input: 
+        comp='outputs/Oe6/Oe6.scaffolds-k4.comp',
+        labels='outputs/Oe6/Oe6.scaffolds-k4.comp.labels.txt'
     run:
         # load numpy array into python
-        comp = np.load({input})
+        comp = np.load(input.comp)
         # convert to a pandas dataframe
         df = pd.DataFrame(comp)
     
         # read labels into python
-        f = open('outputs/Oe6/Oe6.scaffolds-k4.comp.labels.txt', 'r')
+        f = open(input.labels, 'r')
         labels = f.readlines()
 	
         # set column names to labels
@@ -68,81 +65,90 @@ rule suspicious_contigs_Oe6:
         suspicious_column_names = suspicious_columns.columns.tolist()
     
         # write suspicious labels to a file
-        with open({output}, 'w') as file_handler:
+        with open(output.Oe6_contigs, 'w') as file_handler:
             for item in suspicious_column_names:
                 file_handler.write("{}".format(item))
 
-rule compute_sourmash_signature_k4_sylv:
-   output: 'outputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.sig'
-   input: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz'
-   conda: "envs/env.yml"
-   shell:'''
-   # compute tetranucleotide frequency of scaffolds
-   sourmash compute -k 4 --scaled 5 --track-abundance --singleton --name-from-first -o {output} {input}
-   '''
+rule download_sylv_genome_k4:
+    output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz'
+    shell:'''
+	wget -O {output} http://olivegenome.org/genome_datasets/Olea_europaea%3E1kb_scaffolds.gz 
+	'''
 
-rule split_sylv_k4_sig:
+rule split_sylvester:
     output: 
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_0.sig',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_1.sig',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_2.sig',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_3.sig'
-    input: 'outputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.sig'
-    run:
-        with open({input}, 'rt') as sigfp:
-            current_sigs = []
-            n_sigs = 0
-            next_file = 0
-            for sig in signature.load_signatures(sigfp):
-                current_sigs.append(sig)
-                n_sigs += 1
-                if n_sigs == 10689:
-                    with open('outputs/sylvestris/Olea_europaea_1kb_scaffolds.fa{}.sig'.format(next_file), 'wt') as fp:
-                        signature.save_signatures(current_sigs, fp)
-                        next_file += 1
-                        current_sigs = []
-                    n_sigs = 0
-            with open('outputs/sylvestris/Olea_europaea_1kb_scaffolds.fa{}.sig'.format(next_file), 'wt') as fp:
-                signature.save_signatures(current_sigs, fp)
- 
-rule run_sourmash_compare_sylv_1kb:
-    output: 
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_0.comp',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_0.comp.labels.txt',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_1.comp',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_1.comp.labels.txt',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_2.comp',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_2.comp.labels.txt',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_3.comp',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_3.comp.labels.txt'
-    input: 
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_0.sig',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_1.sig',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_2.sig',
-        'outputs/sylvestris/Olea_europaea_1kb_scaffolds_3.sig'
+        'inputs/sylvestris/Olea_europaea_1kb_scaffolds.0.fa',
+        'inputs/sylvestris/Olea_europaea_1kb_scaffolds.1.fa',
+        'inputs/sylvestris/Olea_europaea_1kb_scaffolds.2.fa',
+        'inputs/sylvestris/Olea_europaea_1kb_scaffolds.3.fa'
+    input: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa'
     conda: "envs/env.yml"
     shell:'''
-    sourmash compare -k 4 -o {output} {input} 
+    pyfasta split -n 4 --overlap 0 {input}
+    '''
+
+rule compute_sourmash_signature_k4_sylv:
+    output: 
+        slice0='outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.sig',
+        slice1='outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.sig',
+        slice2='outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.sig',
+        slice3='outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.sig'
+    input:
+        slice0='inputs/sylvestris/Olea_europaea_1kb_scaffolds.0.fa',
+        slice1='inputs/sylvestris/Olea_europaea_1kb_scaffolds.1.fa',
+        slice2='inputs/sylvestris/Olea_europaea_1kb_scaffolds.2.fa',
+        slice3='inputs/sylvestris/Olea_europaea_1kb_scaffolds.3.fa'
+    conda: "envs/env.yml"
+    shell:'''
+    # compute tetranucleotide frequency of scaffolds
+    sourmash compute -k 4 --scaled 5 --track-abundance --singleton --name-from-first -o {output.slice0} {input.slice0}
+    sourmash compute -k 4 --scaled 5 --track-abundance --singleton --name-from-first -o {output.slice1} {input.slice1}
+    sourmash compute -k 4 --scaled 5 --track-abundance --singleton --name-from-first -o {output.slice2} {input.slice2}
+    sourmash compute -k 4 --scaled 5 --track-abundance --singleton --name-from-first -o {output.slice3} {input.slice3}
+    '''
+
+rule run_sourmash_compare_sylv_1kb:
+    output: 
+        slice0='outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.comp',
+        slice0label='outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.comp.labels.txt',
+        slice1='outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.comp',
+        slice1label='outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.comp.labels.txt',
+        slice2='outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.comp',
+        slice2label='outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.comp.labels.txt',
+        slice3='outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.comp',
+        slice3label='outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.comp.labels.txt'
+    input: 
+        slice0='outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.sig',
+        slice1='outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.sig',
+        slice2='outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.sig',
+        slice3='outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.sig'
+    conda: "envs/env.yml"
+    shell:'''
+    sourmash compare -k 4 -o {output.slice0} {input.slice0} 
+    sourmash compare -k 4 -o {output.slice1} {input.slice1}
+    sourmash compare -k 4 -o {output.slice2} {input.slice2}
+    sourmash compare -k 4 -o {output.slice3} {input.slice3}
     '''
 
 rule suspicious_contigs_sylv:
-    output: 'outputs/sylvestris/suspicious_contigs.txt'
+    output: 
+        file0='outputs/sylvestris/suspicious_contigs.txt'
     input: 
-        comp0='outputs/sylvestris/Olea_europaea_1kb_scaffolds_0.comp',
-        lab0='outputs/sylvestris/Olea_europaea_1kb_scaffolds_0.comp.labels.txt',
-        comp1='outputs/sylvestris/Olea_europaea_1kb_scaffolds_1.comp',
-        lab1='outputs/sylvestris/Olea_europaea_1kb_scaffolds_1.comp.labels.txt',
-        comp2='outputs/sylvestris/Olea_europaea_1kb_scaffolds_2.comp',
-        lab2='outputs/sylvestris/Olea_europaea_1kb_scaffolds_2.comp.labels.txt',
-        comp3='outputs/sylvestris/Olea_europaea_1kb_scaffolds_3.comp',
-        lab3='outputs/sylvestris/Olea_europaea_1kb_scaffolds_3.comp.labels.txt'
+        comp0='outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.comp',
+        lab0='outputs/sylvestris/Olea_europaea_1kb_scaffolds.0.comp.labels.txt',
+        comp1='outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.comp',
+        lab1='outputs/sylvestris/Olea_europaea_1kb_scaffolds.1.comp.labels.txt',
+        comp2='outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.comp',
+        lab2='outputs/sylvestris/Olea_europaea_1kb_scaffolds.2.comp.labels.txt',
+        comp3='outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.comp',
+        lab3='outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.comp.labels.txt'
         
     run:
         # load numpy array into python
-        comp0 = np.load({input.comp0})
-        comp1 = np.load({input.comp1})
-        comp2 = np.load({input.comp2})
-        comp3 = np.load({input.comp3})
+        comp0 = np.load(input.comp0)
+        comp1 = np.load(input.comp1)
+        comp2 = np.load(input.comp2)
+        comp3 = np.load(input.comp3)
         
         # convert to a pandas dataframe
         df0 = pd.DataFrame(comp0)
@@ -151,16 +157,16 @@ rule suspicious_contigs_sylv:
         df3 = pd.DataFrame(comp3)
         
         # read labels into python
-        f0 = open({input.lab0}, 'r')
+        f0 = open(input.lab0, 'r')
         labels0 = f0.readlines()
 	
-        f1 = open({input.lab1}, 'r')
+        f1 = open(input.lab1, 'r')
         labels1 = f1.readlines()
         
-        f2 = open({input.lab2}, 'r')
+        f2 = open(input.lab2, 'r')
         labels2 = f2.readlines()
         
-        f3 = open({input.lab3}, 'r')
+        f3 = open(input.lab3, 'r')
         labels3 = f3.readlines()
         
         # set column names to labels
@@ -184,6 +190,6 @@ rule suspicious_contigs_sylv:
         suspicious_column_names = suspicious_column_names0 + suspicious_column_names1 + suspicious_column_names2 + suspicious_column_names3
         
         # write suspicious labels to a file
-        with open({output}, 'w') as file_handler:
+        with open(output.file0, 'w') as file_handler:
             for item in suspicious_column_names:
                 file_handler.write("{}".format(item))

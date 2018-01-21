@@ -2,3 +2,4 @@ channels:
  - bioconda
 dependencies:
  - busco=3.0.2
+ - augustus=3.2.3

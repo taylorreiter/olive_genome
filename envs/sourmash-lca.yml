@@ -1,5 +1,13 @@
 channels:
- - bioconda
+   - bioconda
+   - anaconda
 dependencies:
- - pip:
-  -"editable=git+https://github.com/dib-lab/sourmash.git@add/lca#egg=sourmash"
+   - pandas
+   - cython
+   - matplotlib 
+   - scipy 
+   - scikit-learn 
+   - khmer=2.1.2
+   # - sourmash=2.0.0a2
+   - pip:
+     - "--editable=git+https://github.com/dib-lab/sourmash.git@master#egg=sourmash"
