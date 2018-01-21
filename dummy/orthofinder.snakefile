@@ -43,5 +43,5 @@ rule run_orthofinder:
     conda: 'envs/env.yml'
     shell:'''
 	orthofinder -f inputs/peptides -og
-	cp inputs/peptides/Results_{date} outputs/orthofinder/
+	mv inputs/peptides/Results* outputs/orthofinder/
 	'''
