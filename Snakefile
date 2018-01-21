@@ -15,9 +15,4 @@ rule all:
         'outputs/aur-pul-nucmer/Oe6-APvarSan_filter_coords.txt',
         'outputs/aur-pul-nucmer/Oe6-APvarEx_filter_coords.txt',
         'outputs/busco/run_wild_olive_busco',
-        expand('inputs/peptides/Results_{date}/Orthogroups.csv', date = ['Jan20']),
-        expand('inputs/peptides/Results_{date}/Orthogroups.txt', date = ['Jan20']),
-        expand('inputs/peptides/Results_{date}/Orthogroups_UnassignedGenes.csv', date = ['Jan20']),
-        expand('inputs/peptides/Results_{date}/Orthogroups.GeneCount.csv', date = ['Jan20']),
-        expand('inputs/peptides/Results_{date}/Statistics_Overall.csv', date = ['Jan20']),
-        expand('inputs/peptides/Results_{date}/Statistics_PerSpecies.csv', date = ['Jan20'])
+        'outputs/orthofinder/'
