@@ -23,6 +23,7 @@ rule download_sylv_inputs_orthofinder:
 # Automatically places a directory with the results under the directory in which the protein fasta sequences are listed. 
 # Additionally, the output directory is always named Results_*, where the asterisk is the date in the United Kingdom at the moment the program is being run.
 # The format for the date is Mon_Day (i.e. Jan_20). 
+
 rule run_orthofinder:
     output: 'outputs/orthofinder/'
     input: 
@@ -31,5 +32,5 @@ rule run_orthofinder:
     conda: 'envs/env.yml'
     shell:'''
 	orthofinder -f inputs/peptides -og
-	mv inputs/peptides/Results* {output}
+	cp -a inputs/peptides/Results*/. {output}
 	'''

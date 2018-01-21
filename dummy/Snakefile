@@ -15,4 +15,4 @@ rule all:
         'outputs/aur-pul-nucmer/Oe6-APvarSan_filter_coords.txt',
         'outputs/aur-pul-nucmer/Oe6-APvarEx_filter_coords.txt',
         'outputs/busco/run_wild_olive_busco',
-        'outputs/orthofinder'
+        'outputs/orthofinder/'
