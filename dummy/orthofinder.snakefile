@@ -24,25 +24,12 @@ rule download_sylv_inputs_orthofinder:
 # Additionally, the output directory is always named Results_*, where the asterisk is the date in the United Kingdom at the moment the program is being run.
 # The format for the date is Mon_Day (i.e. Jan_20). 
 rule run_orthofinder:
-    output: 
-        'outputs/orthofinder/Orthogroups.csv',
-        'outputs/orthofinder/Orthogroups.txt',
-        'outputs/orthofinder/Orthogroups_UnassignedGenes.csv',
-        'outputs/orthofinder/Orthogroups.GeneCount.csv',
-        'outputs/orthofinder/Statistics_Overall.csv',
-        'outputs/orthofinder/Statistics_PerSpecies.csv',
-        'outputs/orthofinder/WorkingDirectory/Blast0_0.txt',
-        'outputs/orthofinder/WorkingDirectory/clusters_OrthoFinder_v1.1.10_I1.5.txt_id_pairs.txt',
-        'outputs/orthofinder/WorkingDirectory/SequenceIDs.txt',
-        'outputs/orthofinder/WorkingDirectory/SpeciesIDs.txt',
-        'outputs/orthofinder/WorkingDirectory/clusters_OrthoFinder_v1.1.10_I1.5.txt',
-        'outputs/orthofinder/WorkingDirectory/OrthoFinder_v1.1.10_graph.txt',
-        'outputs/orthofinder/WorkingDirectory/Species0.fa'        
+    output: 'outputs/orthofinder/'
     input: 
         'inputs/peptides/Olea_europaea.gene.pep.final.chr_and_chrUn_noTE.fa',
         'inputs/peptides/OE6A.pep.fa'
     conda: 'envs/env.yml'
     shell:'''
 	orthofinder -f inputs/peptides -og
-	mv inputs/peptides/Results* outputs/orthofinder/
+	mv inputs/peptides/Results* {output}
 	'''
