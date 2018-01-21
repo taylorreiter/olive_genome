@@ -21,10 +21,10 @@ rule all:
         expand('inputs/peptides/Results_{date}/Orthogroups.GeneCount.csv', date = ['Jan21']),
         expand('inputs/peptides/Results_{date}/Statistics_Overall.csv', date = ['Jan21']),
         expand('inputs/peptides/Results_{date}/Statistics_PerSpecies.csv', date = ['Jan21']),
-        expand('input/peptides/Results_{date}/WorkingDirectory/Blast0_0.txt', date = ['Jan21']),
-        expand('input/peptides/Results_{date}/WorkingDirectory/clusters_OrthoFinder_v1.1.10_I1.5.txt_id_pairs.txt', date = ['Jan21']),
-        expand('input/peptides/Results_{date}/WorkingDirectory/SequenceIDs.txt', date = ['Jan21']),
-        expand('input/peptides/Results_{date}/WorkingDirectory/SpeciesIDs.txt', date = ['Jan21']),
-        expand('input/peptides/Results_{date}/WorkingDirectory/clusters_OrthoFinder_v1.1.10_I1.5.txt', date = ['Jan21']),
-        expand('input/peptides/Results_{date}/WorkingDirectory/OrthoFinder_v1.1.10_graph.txt', date = ['Jan21']),
-        expand('input/peptides/Results_{date}/WorkingDirectory/Species0.fa', date = ['Jan21'])
+        expand('inputs/peptides/Results_{date}/WorkingDirectory/Blast0_0.txt', date = ['Jan21']),
+        expand('inputs/peptides/Results_{date}/WorkingDirectory/clusters_OrthoFinder_v1.1.10_I1.5.txt_id_pairs.txt', date = ['Jan21']),
+        expand('inputs/peptides/Results_{date}/WorkingDirectory/SequenceIDs.txt', date = ['Jan21']),
+        expand('inputs/peptides/Results_{date}/WorkingDirectory/SpeciesIDs.txt', date = ['Jan21']),
+        expand('inputs/peptides/Results_{date}/WorkingDirectory/clusters_OrthoFinder_v1.1.10_I1.5.txt', date = ['Jan21']),
+        expand('inputs/peptides/Results_{date}/WorkingDirectory/OrthoFinder_v1.1.10_graph.txt', date = ['Jan21']),
+        expand('inputs/peptides/Results_{date}/WorkingDirectory/Species0.fa', date = ['Jan21'])
