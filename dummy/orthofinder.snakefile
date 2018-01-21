@@ -24,23 +24,24 @@ rule download_sylv_inputs_orthofinder:
 # Date is specified as a variable in the master Snakefile. 
 rule run_orthofinder:
     output: 
-        'inputs/peptides/Results_{date}/Orthogroups.csv',
-        'inputs/peptides/Results_{date}/Orthogroups.txt',
-        'inputs/peptides/Results_{date}/Orthogroups_UnassignedGenes.csv',
-        'inputs/peptides/Results_{date}/Orthogroups.GeneCount.csv',
-        'inputs/peptides/Results_{date}/Statistics_Overall.csv',
-        'inputs/peptides/Results_{date}/Statistics_PerSpecies.csv',
-        'inputs/peptides/Results_{date}/WorkingDirectory/Blast0_0.txt',
-        'inputs/peptides/Results_{date}/WorkingDirectory/clusters_OrthoFinder_v1.1.10_I1.5.txt_id_pairs.txt',
-        'inputs/peptides/Results_{date}/WorkingDirectory/SequenceIDs.txt',
-        'inputs/peptides/Results_{date}/WorkingDirectory/SpeciesIDs.txt',
-        'inputs/peptides/Results_{date}/WorkingDirectory/clusters_OrthoFinder_v1.1.10_I1.5.txt',
-        'inputs/peptides/Results_{date}/WorkingDirectory/OrthoFinder_v1.1.10_graph.txt',
-        'inputs/peptides/Results_{date}/WorkingDirectory/Species0.fa'        
+        'outputs/orthofinder/Orthogroups.csv',
+        'outputs/orthofinder/Orthogroups.txt',
+        'outputs/orthofinder/Orthogroups_UnassignedGenes.csv',
+        'outputs/orthofinder/Orthogroups.GeneCount.csv',
+        'outputs/orthofinder/Statistics_Overall.csv',
+        'outputs/orthofinder/Statistics_PerSpecies.csv',
+        'outputs/orthofinder/WorkingDirectory/Blast0_0.txt',
+        'outputs/orthofinder/WorkingDirectory/clusters_OrthoFinder_v1.1.10_I1.5.txt_id_pairs.txt',
+        'outputs/orthofinder/WorkingDirectory/SequenceIDs.txt',
+        'outputs/orthofinder/WorkingDirectory/SpeciesIDs.txt',
+        'outputs/orthofinder/WorkingDirectory/clusters_OrthoFinder_v1.1.10_I1.5.txt',
+        'outputs/orthofinder/WorkingDirectory/OrthoFinder_v1.1.10_graph.txt',
+        'outputs/orthofinder/WorkingDirectory/Species0.fa'        
     input: 
         'inputs/peptides/Olea_europaea.gene.pep.final.chr_and_chrUn_noTE.fa',
         'inputs/peptides/OE6A.pep.fa'
     conda: 'envs/env.yml'
     shell:'''
 	orthofinder -f inputs/peptides -og
+	cp inputs/peptides/Results_{date} outputs/orthofinder/
 	'''
