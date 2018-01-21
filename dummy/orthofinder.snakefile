@@ -2,9 +2,12 @@
 #    input: 'outputs/Results_*_orthofinder'
 
 rule download_Oe6_inputs_orthofinder:
-    output: 'inputs/peptides/OE6A.pep.fa'
+    output: 
+        gz = 'inputs/peptides/OE6A.pep.fa.gz',
+        uncmp = 'inputs/peptides/OE6A.pep.ta'
     shell:'''
-    wget -O {output} https://osf.io/c3m9a/download?version=1 
+    wget -O {output.gz} https://osf.io/c3m9a/download?version=1 
+    gunzip -c {output.gz} > {output.uncmp}
 	'''
 
 rule download_sylv_inputs_orthofinder:
@@ -20,8 +23,6 @@ rule download_sylv_inputs_orthofinder:
 # Automatically places a directory with the results under the directory in which the protein fasta sequences are listed. 
 # Additionally, the output directory is always named Results_*, where the asterisk is the date in the United Kingdom at the moment the program is being run.
 # The format for the date is Mon_Day (i.e. Jan_20). 
-# The correct date therefore needs to be changed each time a run is made.  
-# Date is specified as a variable in the master Snakefile. 
 rule run_orthofinder:
     output: 
         'outputs/orthofinder/Orthogroups.csv',
