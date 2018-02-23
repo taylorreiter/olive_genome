@@ -4,7 +4,7 @@
 rule download_Oe6_inputs_orthofinder:
     output: 
         gz = 'inputs/peptides/OE6A.pep.fa.gz',
-        uncmp = 'inputs/peptides/OE6A.pep.ta'
+        uncmp = 'inputs/peptides/OE6A.pep.fa'
     shell:'''
     wget -O {output.gz} https://osf.io/c3m9a/download?version=1 
     gunzip -c {output.gz} > {output.uncmp}
