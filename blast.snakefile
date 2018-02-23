@@ -17,7 +17,7 @@ rule download_Oe6_inputs_blast:
 	
 rule download_sylv_inputs_blast:
     output: 
-        gz='inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz'  
+        gz='inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz',  
         uncmp='inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa'
     shell:'''
 		wget -O {output.gz} http://olivegenome.org/genome_datasets/Olea_europaea%3E1kb_scaffolds.gz
