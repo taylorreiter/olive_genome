@@ -24,11 +24,13 @@ rule compute_sourmash_signature_k4_Oe6:
    '''
    
 rule run_sourmash_compare_Oe6:
-	output: 'outputs/Oe6/Oe6.scaffolds-k4.comp'
+	output: 
+	    comp='outputs/Oe6/Oe6.scaffolds-k4.comp',
+	    labels='outputs/Oe6/Oe6.scaffolds-k4.comp.labels.txt'
 	input: 'outputs/Oe6/Oe6.scaffolds-k4.fa.sig'
 	conda: "envs/env.yml"
 	shell:'''
-	sourmash compare -o {output} {input}
+	sourmash compare -o {output.comp} {input}
 	'''
 	
 rule plot_compare_Oe6:
