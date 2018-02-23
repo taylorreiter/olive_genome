@@ -1,0 +1,14 @@
+__default__:
+  mem: 1G
+  time: '01:00:00'
+
+compute_reads_sig:
+  time: '8:00:00'
+
+build_kraken_db:
+  time: '2:00:00'
+  mem: 110G
+
+sourmash_gather_podar_query:
+  time: '72:00:00'
+  mem: 15G
