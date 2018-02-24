@@ -72,9 +72,12 @@ rule suspicious_contigs_Oe6:
                 file_handler.write("{}".format(item))
 
 rule download_sylv_genome_k4:
-    output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz'
+    output: 
+        gz='inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.gz',
+        uncmp='inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa'
     shell:'''
-	wget -O {output} http://olivegenome.org/genome_datasets/Olea_europaea%3E1kb_scaffolds.gz 
+	wget -O {output.gz} http://olivegenome.org/genome_datasets/Olea_europaea%3E1kb_scaffolds.gz
+	gunzip -c {output.gz} > {output.uncmp} 
 	'''
 
 rule split_sylvester:
