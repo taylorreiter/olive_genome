@@ -1,14 +1,55 @@
 __default__:
+  mem: 2G
+  time: '00:20:00'
+
+# apulnucmer.snakefile
+apul_san_nucmer_coords:
+  time: '1:00:00'
+  mem: 8G
+
+apul_exf150_nucmer:
+  time: '1:00:00'
+  mem: 8G
+
+# blast.snakefile
+grab_suspicious_contigs_Oe6:
+  time: '1:00:00'
+
+rule grab_suspicious_contigs_sylv:
+  time: '1:00:00'
+
+rule install_blast_db:
+  time: '3:00:00'
+
+rule blast_low_similarity_contigs_Oe6: 
+  time: '1:00:00'
   mem: 1G
-  time: '01:00:00'
 
-compute_reads_sig:
-  time: '8:00:00'
+rule blast_low_similarity_contigs_sylv:
+  time: '1:00:00'
+  mem: 1G
 
-build_kraken_db:
-  time: '2:00:00'
-  mem: 110G
+# busco
+run_busco:
+  time: '6:00:00'
+  mem: 8G
 
-sourmash_gather_podar_query:
-  time: '72:00:00'
-  mem: 15G
+# olive nucmer
+olive_genomes_nucmer:
+  time: '3:00:00'
+  mem: 16G
+
+# orthofinder
+run_orthofinder:
+  time: '10:00:00'
+  mem: 32G
+
+# tetramernucleotide
+run_sourmash_compare_Oe6:
+  time: '3:00:00'
+  mem: 10G
+
+run_sourmash_compare_sylv_1kb:
+  time: '3:00:00'
+  mem: 10G
+

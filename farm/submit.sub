@@ -4,10 +4,9 @@
 #PBS -l mem=1G
 #PBS -A ged
 
-module load anaconda
 source activate snakemake
 
-logdir=hpcc/log
+logdir=farm/log
 mkdir -p $logdir
 
 QSUB="qsub -l nodes=1:ppn={threads} "
