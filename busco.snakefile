@@ -3,7 +3,7 @@
 
 rule download_sylv_inputs_busco:
     output: 
-        gz='inputs/sylvestris/Olea_europaea_all_scaffolds.fa,gz',
+        gz='inputs/sylvestris/Olea_europaea_all_scaffolds.fa.gz',
         uncmp='inputs/sylvestris/Olea_europaea_all_scaffolds.fa'
     shell:'''
 	wget -O {output.gz} http://olivegenome.org/genome_datasets/Olea_europaea_all_scaffolds.fa.gz 
@@ -23,8 +23,9 @@ rule run_busco:
     output: 'outputs/busco/run_wild_olive_busco'
     input: 
         genome='inputs/sylvestris/Olea_europaea_all_scaffolds.fa',
-        busco_db='inputs/busco/embryophyta_odb9/'
+        busco_db='inputs/busco/embryophyta_odb9'
     conda:  "envs/busco.yml"
     shell:'''
-	run_busco -i {input.genome} -o {output} -l {input.busco_db} -m geno
+	run_busco -i {input.genome} -o run_wild_olive_busco -l {input.busco_db} -m geno
+        mv run_wild_olive_busco {output}
     '''
