@@ -26,6 +26,6 @@ rule run_busco:
         busco_db='inputs/busco/embryophyta_odb9'
     conda:  "envs/busco.yml"
     shell:'''
-	run_busco -i {input.genome} -o run_wild_olive_busco -l {input.busco_db} -m geno
+	run_busco -i {input.genome} -o wild_olive_busco -l {input.busco_db} -m geno
         mv run_wild_olive_busco {output}
     '''
