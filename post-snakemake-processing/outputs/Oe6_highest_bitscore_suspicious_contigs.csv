@@ -1,0 +1,126 @@
+sseqid,qseqid,pident,length,mismatch,gapopen,qstart,qend,sstart,send,evalue,bitscore,nuid_title
+AC079934.3,Oe6_s09260,99.357,1245,8,0,1,1245,21345,22589,0,2255,Homo sapiens BAC clone RP11-327C24 from UL, complete sequence
+AC126797.4,Oe6_s07134,100,29,0,0,2116,2144,149375,149347,0.014,54.7,Mus musculus BAC clone RP23-443F6 from 1, complete sequence
+AJ002765.1,Oe6_s01787,91.358,81,5,2,223,302,81,2,8.48e-20,110,Olea europaea subsp. sativa tandem repeat (Sau3AI)
+AJ002765.1,Oe6_s09118,82.716,81,12,2,1305,1384,80,1,1.15e-07,71.3,Olea europaea subsp. sativa tandem repeat (Sau3AI)
+AJ002765.1,Oe6_s05502,89.873,79,6,2,360,437,78,1,7.09e-17,100,Olea europaea subsp. sativa tandem repeat (Sau3AI)
+AJ002766.1,Oe6_s01605,86.26,131,15,3,492,621,1,129,1.72e-28,139,Olea europaea subsp. sativa tandem repeat (pOS218)
+AJ002766.1,Oe6_s10883,86.957,115,13,2,1879,1992,16,129,1.24e-24,128,Olea europaea subsp. sativa tandem repeat (pOS218)
+AJ002766.1,Oe6_s03730,84.615,130,19,1,226,355,1,129,2.19e-25,128,Olea europaea subsp. sativa tandem repeat (pOS218)
+AJ297959.1,Oe6_s07611,90.698,86,7,1,270,354,86,1,5.45e-21,113,Olea europaea tandem repeat, isolate OeGEM86
+AK110179.1,Oe6_s04612,75.335,1938,425,38,35391,37309,321,2224,0,881,Oryza sativa Japonica Group cDNA clone:002-161-H03, full insert sequence
+AM118080.1,Oe6_s03437,91.52,342,29,0,96,437,28149,28490,1.98e-128,472,Ustilago hordei mating type region MAT-1, strain 4857-4
+AP012218.1,Oe6_s02796,92.683,41,3,0,11125,11165,293115,293075,0.003,60.2,Kluyveromyces marxianus DMKU3-1042 DNA, complete genome, chromosome 6
+AP012279.1,Oe6_s03225,73.46,422,102,8,2714,3130,5452053,5451637,2.37e-31,150,Bradyrhizobium sp. S23321 DNA, complete genome
+AY392450.1,Oe6_s01851,100,599,0,0,1,599,9424,8826,0,1107,Escherichia coli strain C YjiR, YjiS, Z5950, YjiA, YjiX, YjiY, HpaC, HpaB, HpaA, and HpaX genes, complete cds; and HpaI gene, partial cds
+BT026646.1,Oe6_s02199,74.578,1243,290,23,74832,76061,1385,156,3.71e-141,521,Gasterosteus aculeatus clone CEC32-A08 mRNA sequence
+BX571966.1,Oe6_s03156,97.674,43,1,0,2198,2240,328656,328614,1.87e-08,75,Burkholderia pseudomallei strain K96243, chromosome 2, complete sequence
+CP000058.1,Oe6_s10548,92.105,38,3,0,899,936,454905,454868,0.097,54.7,Pseudomonas savastanoi pv. phaseolicola 1448A chromosome, complete genome
+CP000085.1,Oe6_s01635,74.401,543,129,9,490,1027,1218752,1218215,4.25e-54,224,Burkholderia thailandensis E264 chromosome II, complete sequence
+CP000353.2,Oe6_s01423,100,29,0,0,197,225,2528476,2528504,0.012,54.7,Cupriavidus metallidurans CH34 megaplasmid, complete sequence
+CP001001.1,Oe6_s10896,88.918,767,83,2,1913,2678,1415450,1414685,0,944,Methylobacterium radiotolerans JCM 2831, complete genome
+CP001796.1,Oe6_s05098,100,31,0,0,106,136,508577,508547,0.002,58.4,Pseudoalteromonas sp. SM9913 chromosome I, complete sequence
+CP001905.1,Oe6_s04615,78.698,2718,493,69,34829,37506,1535324,1532653,0,1733,Thioalkalivibrio sp. K90mix, complete genome
+CP003002.1,Oe6_s08696,100,30,0,0,243,272,2494054,2494083,0.018,56.5,Myceliophthora thermophila ATCC 42464 chromosome 1, complete sequence
+CP003156.1,Oe6_s11053,97.222,36,1,0,1902,1937,3320216,3320251,6.69e-05,62.1,Owenweeksia hongkongensis DSM 17368, complete genome
+CP003969.1,Oe6_s10799,89.362,47,2,3,3614,3659,9117731,9117687,0.008,56.5,Sorangium cellulosum So0157-2, complete genome
+CP003976.1,Oe6_s08900,94.872,39,2,0,402,440,2373352,2373314,0.000153,62.1,Burkholderia pseudomallei NCTC 13179 chromosome 1, complete sequence
+CP003976.1,Oe6_s09335,94.872,39,2,0,755,793,2373314,2373352,3.4e-05,62.1,Burkholderia pseudomallei NCTC 13179 chromosome 1, complete sequence
+CP006581.1,Oe6_s06569,86.538,52,5,2,34932,34982,926633,926683,0.057,56.5,Mesorhizobium huakuii 7653R genome
+CP009477.1,Oe6_s10739,92,50,3,1,3323,3371,3120628,3120677,1.25e-06,69.4,Burkholderia pseudomallei MSHR2543 chromosome II, complete sequence
+CP010409.1,Oe6_s01133,77.119,118,16,10,2641,2750,3455599,3455485,0.003,58.4,Xanthomonas sacchari strain R1, complete genome
+CP011072.1,Oe6_s01763,99.735,756,2,0,8,763,1105994,1106749,0,1386,Azoarcus sp. CIB, complete genome
+CP011514.1,Oe6_s02653,85.07,5519,711,89,2242,7689,4603786,4598310,0,5522,Mitsuaria sp. 7, complete genome
+CP012504.1,Oe6_s02915,96.875,32,0,1,9302,9333,2263640,2263610,0.24,52.8,Aeromonas veronii strain TH0426, complete genome
+CP012677.1,Oe6_s06960,100,30,0,0,4327,4356,3737272,3737243,0.008,56.5,Arthrobacter alpinus strain R3.8, complete genome
+CP013457.1,Oe6_s10592,95,40,1,1,548,586,3911396,3911357,0.000432,62.1,Burkholderia sp. MSMB617WGS chromosome 1, complete sequence
+CP013861.1,Oe6_s05140,97.222,36,1,0,1374,1409,5034019,5034054,0.000117,62.1,Pseudomonas fragi strain P121, complete genome
+CP015732.1,Oe6_s07191,95.122,41,1,1,1128,1168,3022982,3023021,1.94e-05,63.9,Arthrobacter sp. U41, complete genome
+CP016268.1,Oe6_s03307,82.105,190,29,5,322,509,2117939,2118125,1e-33,158,Woeseia oceani strain XK5, complete genome
+CP017640.1,Oe6_s04972,75.077,325,65,14,3356,3672,1447754,1447438,3.41e-27,137,Methylobacterium sp. C1 chromosome, complete genome
+CP017640.1,Oe6_s08731,91.309,1841,156,4,6959,8796,1675096,1673257,0,2510,Methylobacterium sp. C1 chromosome, complete genome
+CP017640.1,Oe6_s02989,89.335,4163,380,46,4,4143,2168980,2164859,0,5169,Methylobacterium sp. C1 chromosome, complete genome
+CP020543.1,Oe6_s11194,100,1181,0,0,1,1181,929118,927938,0,2182,Escherichia coli C, complete genome
+CP022025.1,Oe6_s11497,90.449,534,50,1,4,536,483317,483850,0,702,Alternaria solani isolate NL03003 chromosome 2, complete sequence
+CP022111.1,Oe6_s03283,76.14,2477,542,40,1,2451,536254,538707,0,1254,Nitrospirillum amazonense CBAmc chromosome 2, complete sequence
+CP023284.1,Oe6_s07123,95.455,44,1,1,514,556,6075719,6075762,5.43e-07,69.4,Variovorax boronicumulans strain J1 chromosome, complete genome
+CP024201.1,Oe6_s07007,71.275,1114,249,55,2892,3968,1260716,1261795,7.97e-52,219,Caulobacter mirabilis strain FWC 38 chromosome, complete genome
+CP024201.1,Oe6_s03144,77.876,678,129,17,1031,1699,4064501,4065166,7.83e-107,401,Caulobacter mirabilis strain FWC 38 chromosome, complete genome
+CR700960.1,Oe6_s05116,90.909,44,2,2,842,885,353,312,0.002,58.4,Tetraodon nigroviridis full-length cDNA
+DQ336954.1,Oe6_s05600,100,28,0,0,147,174,148013,147986,0.016,52.8,Glycine max cultivar Williams 82 clone BAC gmw-74i13, complete sequence
+FO905881.1,Oe6_s09451,82.5,160,28,0,591,750,340857,341016,3.16e-29,141,Leptosphaeria biglobosa Thlaspii ibcn65_scaffold00020 complete sequence
+FO906011.1,Oe6_s01783,73.333,630,146,19,1,619,374129,374747,6.33e-51,213,Leptosphaeria maculans lepidii ibcn84_scaffold00013 complete sequence
+FP565176.1,Oe6_s05260,73.705,251,66,0,1590,1840,678348,678098,5.48e-16,99,Xanthomonas albilineans GPE PC73 complete genome
+FQ859185.1,Oe6_s01418,100,28,0,0,965,992,3666934,3666961,0.043,52.8,Streptomyces cattleya str. NRRL 8057 main chromosome, complete genome
+KJ767664.1,Oe6_s01253,100,29,0,0,481,509,245,217,0.023,54.7,Nicotiana tabacum CONSTANS interacting protein 2b (CIP2b) mRNA, complete cds
+KM577592.1,Oe6_s01305,88.317,2080,191,22,552,2612,2834,788,0,2447,Olea europaea isolate 60016_G retrotransposon gypsy-type, complete sequence
+KM577592.1,Oe6_s09524,89.44,625,54,6,1,614,5638,6261,0,778,Olea europaea isolate 60016_G retrotransposon gypsy-type, complete sequence
+KU202687.1,Oe6_s00826,77.585,1499,318,11,25677,27172,3491,2008,0,891,Hypocrella siamensis hypothetical protein gene, partial cds
+LL876866.1,Oe6_s05482,100,29,0,0,336,364,158884,158912,0.006,54.7,Schistosoma margrebowiei genome assembly S_margrebowiei_Zambia, scaffold SMRZ_scaffold0000021
+LM021655.1,Oe6_s03467,100,30,0,0,965,994,5375,5346,0.002,56.5,Soboliphyme baturini genome assembly S_baturini_Dall_Island, scaffold SBAD_scaffold0008046
+LN596200.1,Oe6_s00991,97.059,34,1,0,9611,9644,35585,35552,0.005,58.4,Cyprinus carpio genome assembly common carp genome, scaffold 000000983
+LT558122.1,Oe6_s06580,92.026,3361,244,12,7304,10650,242359,239009,0,4700,Ustilago bromivora strain UB2112 genome assembly, chromosome: VI
+LT629751.1,Oe6_s11298,73.837,688,158,22,122,798,2086853,2087529,4.73e-63,254,Pseudomonas oryzae strain KCTC 32247 genome assembly, chromosome: I
+LT972184.1,Oe6_s08977,100,32,0,0,866,897,10313867,10313836,0.000433,60.2,Larimichthys crocea genome assembly, chromosome: XVIII
+NM_001102642.1,Oe6_s10659,77.358,371,74,7,3473,3838,476,111,2.79e-49,211,Danio rerio zgc:171927 (zgc:171927), mRNA
+X03987.1,Oe6_s09290,100,1128,0,0,1,1128,1500,2627,0,2084,Brevibacterium lactofermentum ATCC 13869 native 4.45 kb plasmid
+X03987.1,Oe6_s05375,100,706,0,0,685,1390,3544,4249,0,1304,Brevibacterium lactofermentum ATCC 13869 native 4.45 kb plasmid
+XM_001747890.1,Oe6_s03139,90.769,65,6,0,1481,1545,478,542,2.51e-12,87.9,Monosiga brevicollis MX1 predicted protein MONBRDRAFT_33402 mRNA, complete cds
+XM_001774216.1,Oe6_s08692,97.059,34,1,0,9127,9160,606,639,0.005,58.4,Physcomitrella patens subsp. patens predicted protein (PHYPADRAFT_88820) mRNA, complete cds
+XM_001986809.1,Oe6_s01250,100,30,0,0,1467,1496,3013,3042,0.007,56.5,Drosophila grimshawi GH20310 (Dgri\GH20310), mRNA
+XM_001991503.1,Oe6_s06634,100,30,0,0,3552,3581,1134,1163,0.042,56.5,Drosophila grimshawi GH12719 (Dgri\GH12719), mRNA
+XM_002050256.2,Oe6_s06647,100,28,0,0,5598,5625,589,616,0.5,52.8,Drosophila virilis uncharacterized protein, transcript variant A (Dvir\GJ20287), mRNA
+XM_002084297.2,Oe6_s08364,72.535,1227,283,39,40849,42054,71,1264,3.79e-90,350,Drosophila simulans uncharacterized protein (Dsim\GD12888), mRNA
+XM_002623730.1,Oe6_s08893,97.368,38,1,0,3226,3263,1696,1733,1.22e-05,65.8,Ajellomyces dermatitidis SLH14081 conserved hypothetical protein, mRNA
+XM_002896176.1,Oe6_s03659,100,28,0,0,464,491,1352,1325,0.016,52.8,Phytophthora infestans T30-4 conserved hypothetical protein (PITG_19665) mRNA, complete cds
+XM_003229219.3,Oe6_s01139,75.581,258,58,5,2380,2634,770,1025,9.17e-23,122,PREDICTED: Anolis carolinensis transcription factor AP-2 epsilon (tfap2e), mRNA
+XM_005648441.1,Oe6_s03453,79.747,158,28,4,734,889,1571,1416,4.68e-20,111,Coccomyxa subellipsoidea C-169 WD40 repeat-like protein mRNA
+XM_007065960.1,Oe6_s01835,74.684,316,70,8,147,460,923,616,1.56e-26,132,PREDICTED: Chelonia mydas calcium/calmodulin-dependent protein kinase I (CAMK1), mRNA
+XM_007147315.1,Oe6_s01715,100,28,0,0,704,731,58,85,0.017,52.8,Phaseolus vulgaris hypothetical protein (PHAVU_006G119000g) mRNA, complete cds
+XM_007739098.1,Oe6_s06595,86.154,65,9,0,5990,6054,1027,1091,1.87e-06,71.3,Capronia epimyces CBS 606.96 alpha-1,3-glucosyltransferase partial mRNA
+XM_007905841.1,Oe6_s07400,94.444,36,1,1,116,150,166,201,0.006,54.7,PREDICTED: Callorhinchus milii E2F transcription factor 4, p107/p130-binding (e2f4), mRNA
+XM_008472155.2,Oe6_s06168,78.744,207,44,0,106238,106444,339,545,2.82e-26,139,PREDICTED: Diaphorina citri DNA-directed RNA polymerases I, II, and III subunit RPABC2 (LOC103507656), mRNA
+XM_010437308.2,Oe6_s01187,100,32,0,0,668,699,315,284,0.000614,60.2,PREDICTED: Camelina sativa THO complex subunit 4D-like (LOC104719387), mRNA
+XM_011148641.1,Oe6_s02660,88.608,79,9,0,42764,42842,636,558,4.14e-14,97.1,PREDICTED: Harpegnathos saltator Krueppel-like factor 6 (LOC105187689), mRNA
+XM_011503336.1,Oe6_s08544,92.5,40,3,0,25316,25355,1920,1959,0.013,58.4,PREDICTED: Ceratosolen solmsi marchali rhoGEF domain-containing protein gxcJ-like (LOC105365230), mRNA
+XM_011646603.1,Oe6_s01122,94.872,39,1,1,2547,2585,3099,3136,0.000784,60.2,PREDICTED: Pogonomyrmex barbatus transcription factor SOX-5 (LOC105432022), mRNA
+XM_012334261.1,Oe6_s10624,92.857,42,0,3,7170,7208,131,172,0.005,58.4,Pseudozyma hubeiensis SY62 hypothetical protein partial mRNA
+XM_012411186.2,Oe6_s07662,92.308,117,5,4,408,522,188,74,4.6e-36,163,PREDICTED: Athalia rosae leukocyte receptor cluster member 1 homolog (LOC105692162), mRNA
+XM_013288764.1,Oe6_s05125,77.586,174,33,4,271,441,1197,1027,2.63e-16,100,PREDICTED: Papilio polytes spectrin alpha chain-like (LOC106107763), mRNA
+XM_013483619.1,Oe6_s05664,80.392,612,118,2,1,611,259,869,1.41e-126,464,Aureobasidium subglaciale EXF-2481 hypothetical protein partial mRNA
+XM_013484506.1,Oe6_s03228,87.285,1337,141,17,938,2271,1739,429,0,1500,Aureobasidium subglaciale EXF-2481 hypothetical protein partial mRNA
+XM_013484806.1,Oe6_s05371,79.61,1025,185,15,22,1034,577,1589,0,713,Aureobasidium subglaciale EXF-2481 hypothetical protein mRNA
+XM_013491291.1,Oe6_s04984,92.519,1417,97,2,2546,3962,1659,252,0,2021,Aureobasidium subglaciale EXF-2481 hypothetical protein partial mRNA
+XM_013569796.1,Oe6_s02715,82.048,713,120,7,28234,28942,760,52,6.06e-166,601,Aureobasidium namibiae CBS 147.97 electron transfer flavo protein subunit beta partial mRNA
+XM_013570201.1,Oe6_s01218,89.491,2807,288,7,246,3047,514,3318,0,3542,Aureobasidium namibiae CBS 147.97 hypothetical protein partial mRNA
+XM_013571637.1,Oe6_s01757,82.022,356,64,0,313,668,450,95,3.9e-78,303,Aureobasidium namibiae CBS 147.97 DUF1348-domain-containing protein partial mRNA
+XM_014041823.1,Oe6_s00973,100,28,0,0,12886,12913,1156,1129,0.28,52.8,Monoraphidium neglectum hypothetical protein partial mRNA
+XM_014421374.1,Oe6_s01147,71.132,1493,375,49,4210,5674,380,1844,1.07e-81,318,PREDICTED: Halyomorpha halys acetyl-CoA carboxylase (LOC106681183), mRNA
+XM_014442737.1,Oe6_s08953,95,40,2,0,1984,2023,704,665,3.67e-05,63.9,PREDICTED: Microplitis demolitor zinc finger protein 629-like (LOC103572947), transcript variant X1, mRNA
+XM_014823966.1,Oe6_s04795,82.594,293,43,7,2823,3111,819,1107,2.96e-61,252,PREDICTED: Priapulus caudatus transcription factor Sox-5-like (LOC106819316), mRNA
+XM_017089751.1,Oe6_s09056,100,32,0,0,987,1018,1102,1071,0.00031,60.2,PREDICTED: Drosophila suzukii protein Star (LOC108021170), mRNA
+XM_017124842.1,Oe6_s03105,100,31,0,0,1505,1535,211,241,0.002,58.4,PREDICTED: Drosophila rhopaloa TBC1 domain family member 10A (LOC108045495), mRNA
+XM_017446921.1,Oe6_s09586,83.938,193,27,2,221,411,4606,4416,1.25e-41,182,PREDICTED: Diaphorina citri myotubularin-related protein 5-like (LOC103516122), mRNA
+XM_017541560.1,Oe6_s02597,81.188,303,45,7,55575,55871,905,1201,4.07e-55,233,PREDICTED: Cebus capucinus imitator forkhead box D3 (FOXD3), mRNA
+XM_017922604.1,Oe6_s02478,74.684,316,74,5,29016,29328,171,483,2e-25,135,PREDICTED: Nicrophorus vespilloides stromal membrane-associated protein 1 (LOC108563816), mRNA
+XM_018100224.1,Oe6_s08681,95,40,2,0,11080,11119,3071,3110,0.000112,63.9,PREDICTED: Drosophila navojoa sterile alpha and TIR motif-containing protein 1 (LOC108650896), transcript variant X5, mRNA
+XM_018183216.1,Oe6_s11453,92.537,67,5,0,1,67,2430,2496,5.51e-16,97.1,Paraphaeosphaeria sporulosa HET-domain-containing protein partial mRNA
+XM_018207570.1,Oe6_s00872,100,28,0,0,1111,1138,435,408,0.54,52.8,Phialocephala scopiformis hypothetical protein mRNA
+XM_018414983.1,Oe6_s10369,77.594,1147,242,15,36418,37556,431,1570,0,680,Rhodotorula graminis WP1 hypothetical protein partial mRNA
+XM_018526763.1,Oe6_s08789,83.882,608,98,0,3820,4427,580,1187,1.45e-160,580,Alternaria alternata cytochrome P450 partial mRNA
+XM_018762073.1,Oe6_s11494,94.737,38,1,1,146,182,257,220,0.00023,58.4,PREDICTED: Scleropages formosus microtubule-associated serine/threonine-protein kinase 1-like (LOC108940135), transcript variant X4, mRNA
+XM_019447259.1,Oe6_s05661,100,28,0,0,150,177,972,945,0.013,52.8,PREDICTED: Panthera pardus cysteine rich with EGF like domains 2 (CRELD2), transcript variant X1, mRNA
+XM_019682738.1,Oe6_s01716,85.965,57,4,4,160,214,55,1,0.000374,58.4,PREDICTED: Aedes albopictus inositol-trisphosphate 3-kinase homolog (LOC109409296), transcript variant X2, mRNA
+XM_019688575.1,Oe6_s03800,82.796,93,16,0,457,549,1274,1366,3.9e-12,84.2,PREDICTED: Aedes albopictus transcription factor GATA-4-like (LOC109414746), mRNA
+XM_020272149.1,Oe6_s04608,84.615,442,57,9,1212,1646,1,438,3.27e-114,429,Diplodia corticola peptidyl-prolyl cis-trans isomerase (BKCO1_20000116), partial mRNA
+XM_020923947.1,Oe6_s05501,100,28,0,0,498,525,1644,1617,0.02,52.8,PREDICTED: Boleophthalmus pectinirostris uncharacterized LOC110159398 (LOC110159398), transcript variant X1, mRNA
+XM_021416171.1,Oe6_s09140,100,28,0,0,250,277,108,81,0.039,52.8,PREDICTED: Numida meleagris vacuole membrane protein 1 (VMP1), transcript variant X1, mRNA
+XM_022344576.1,Oe6_s08173,74.26,777,192,8,76186,76958,979,207,6.74e-81,320,PREDICTED: Nilaparvata lugens 5'-AMP-activated protein kinase catalytic subunit alpha-2 (LOC111057138), mRNA
+XM_022652642.1,Oe6_s02613,80.233,86,17,0,36929,37014,1139,1054,0.000144,65.8,Fonsecaea monophora hypothetical protein (AYO21_02665), partial mRNA
+XM_022815405.1,Oe6_s11429,91.935,62,5,0,92,153,1251,1190,3.54e-13,87.9,PREDICTED: Varroa destructor large neutral amino acids transporter small subunit 2-like (LOC111254501), mRNA
+XM_022995752.1,Oe6_s08341,96.881,513,16,0,22561,23073,715,203,0,859,PREDICTED: Olea europaea var. sylvestris 50S ribosomal protein L18 (LOC111373245), mRNA
+XM_023003504.1,Oe6_s01273,96.534,577,5,5,2567,3128,1,577,0,941,PREDICTED: Olea europaea var. sylvestris general transcriptional corepressor trfA-like (LOC111380038), partial mRNA
+XM_023017671.1,Oe6_s07598,100,76,0,0,124,199,1514,1589,2.59e-29,141,PREDICTED: Olea europaea var. sylvestris linoleate 13S-lipoxygenase 2-1, chloroplastic-like (LOC111392344), mRNA
+XM_023021155.1,Oe6_s09603,92.019,213,17,0,1,213,76,288,3.19e-77,300,PREDICTED: Olea europaea var. sylvestris uncharacterized LOC111395145 (LOC111395145), mRNA
+XM_023021205.1,Oe6_s08332,97.5,40,1,0,60353,60392,339,300,1.38e-05,69.4,PREDICTED: Olea europaea var. sylvestris uncharacterized LOC111395205 (LOC111395205), mRNA
+XM_023028906.1,Oe6_s03798,94.097,559,29,4,1,556,400,957,0,846,PREDICTED: Olea europaea var. sylvestris uncharacterized LOC111401252 (LOC111401252), mRNA
