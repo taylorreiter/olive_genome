@@ -20,7 +20,7 @@ rule compute_sourmash_signature_k4_Oe6:
    conda: "envs/env.yml"
    shell:'''
    # compute tetranucleotide frequency of scaffolds
-   sourmash compute -k 4 --scaled 5 --track-abundance --singleton --name-from-first -o {output} {input}
+   sourmash compute -k 4 --scaled 1 --track-abundance --singleton --name-from-first -o {output} {input}
    '''
    
 rule run_sourmash_compare_Oe6:
@@ -48,6 +48,8 @@ rule suspicious_contigs_Oe6:
         comp='outputs/Oe6/Oe6.scaffolds-k4.comp',
         labels='outputs/Oe6/Oe6.scaffolds-k4.comp.labels.txt'
     run:
+        import statistics
+
         # load numpy array into python
         comp = np.load(input.comp)
         # convert to a pandas dataframe
@@ -60,8 +62,14 @@ rule suspicious_contigs_Oe6:
         # set column names to labels
         df.columns = labels
 	
+        # calculate column means
+        column_means = df.mean(axis=1)
+
+        # calculate suspicion cutoff
+        cutoff = statistics.mean(column_means) - 2*(statistics.stdev(column_means))
+        
         # grab suspicious columns
-        suspicious_columns = df.loc[:, df.mean() > .4]
+        suspicious_columns = df.loc[:, df.mean() < cutoff]
 	
         # write column names to list
         suspicious_column_names = suspicious_columns.columns.tolist()
@@ -106,10 +114,10 @@ rule compute_sourmash_signature_k4_sylv:
     conda: "envs/env.yml"
     shell:'''
     # compute tetranucleotide frequency of scaffolds
-    sourmash compute -k 4 --scaled 5 --track-abundance --singleton --name-from-first -o {output.slice0} {input.slice0}
-    sourmash compute -k 4 --scaled 5 --track-abundance --singleton --name-from-first -o {output.slice1} {input.slice1}
-    sourmash compute -k 4 --scaled 5 --track-abundance --singleton --name-from-first -o {output.slice2} {input.slice2}
-    sourmash compute -k 4 --scaled 5 --track-abundance --singleton --name-from-first -o {output.slice3} {input.slice3}
+    sourmash compute -k 4 --scaled 1 --track-abundance --singleton --name-from-first -o {output.slice0} {input.slice0}
+    sourmash compute -k 4 --scaled 1 --track-abundance --singleton --name-from-first -o {output.slice1} {input.slice1}
+    sourmash compute -k 4 --scaled 1 --track-abundance --singleton --name-from-first -o {output.slice2} {input.slice2}
+    sourmash compute -k 4 --scaled 1 --track-abundance --singleton --name-from-first -o {output.slice3} {input.slice3}
     '''
 
 rule run_sourmash_compare_sylv_1kb:
@@ -149,6 +157,8 @@ rule suspicious_contigs_sylv:
         lab3='outputs/sylvestris/Olea_europaea_1kb_scaffolds.3.comp.labels.txt'
         
     run:
+        import statistics
+        
         # load numpy array into python
         comp0 = np.load(input.comp0)
         comp1 = np.load(input.comp1)
@@ -179,12 +189,24 @@ rule suspicious_contigs_sylv:
         df1.columns = labels1
         df2.columns = labels2
         df3.columns = labels3
-	    
+	
+        # calculate column means
+        column_means0 = df0.mean(axis=1)
+        column_means1 = df1.mean(axis=1)
+        column_means2 = df2.mean(axis=1)
+        column_means3 = df3.mean(axis=1)
+
+        # calculate suspicion cutoff
+        cutoff0 = statistics.mean(column_means0) - 2*(statistics.stdev(column_means0))
+        cutoff1 = statistics.mean(column_means1) - 2*(statistics.stdev(column_means1))
+        cutoff2 = statistics.mean(column_means2) - 2*(statistics.stdev(column_means2))
+        cutoff3 = statistics.mean(column_means3) - 2*(statistics.stdev(column_means3))
+
         # grab suspicious columns
-        suspicious_columns0 = df0.loc[:, df0.mean() < .4]
-        suspicious_columns1 = df1.loc[:, df1.mean() < .4]
-        suspicious_columns2 = df2.loc[:, df2.mean() < .4]
-        suspicious_columns3 = df3.loc[:, df3.mean() < .4]
+        suspicious_columns0 = df0.loc[:, df0.mean() < cutoff0]
+        suspicious_columns1 = df1.loc[:, df1.mean() < cutoff1]
+        suspicious_columns2 = df2.loc[:, df2.mean() < cutoff2]
+        suspicious_columns3 = df3.loc[:, df3.mean() < cutoff3]
 	    
         # write column names to list
         suspicious_column_names0 = suspicious_columns0.columns.tolist()
