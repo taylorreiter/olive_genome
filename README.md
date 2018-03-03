@@ -12,15 +12,22 @@ Run through the prompts.
 
 Configure miniconda and create an environment
 ```
-/home/ubuntu/miniconda3/bin/conda config --add channels r
-/home/ubuntu/miniconda3/bin/conda config --add channels defaults
-/home/ubuntu/miniconda3/bin/conda config --add channels conda-forge
-/home/ubuntu/miniconda3/bin/conda config --add channels bioconda
+~/miniconda3/bin/conda config --add channels r
+~/miniconda3/bin/conda config --add channels defaults
+~/miniconda3/bin/conda config --add channels conda-forge
+~/miniconda3/bin/conda config --add channels bioconda
 
-/home/ubuntu/miniconda3/bin/conda create -n snakemake python==3.6 snakemake=4.3.0 pysam=0.13 pandas=0.20.3 numpy=1.13.3 sourmash=2.0.0a2
+~/miniconda3/bin/conda create -n snakemake python==3.6 snakemake=4.3.0 pysam=0.13 pandas=0.20.3 numpy=1.13.3 sourmash=2.0.0a2
 
-source /home/ubuntu/miniconda3/bin/activate snakemake
+source ~/miniconda3/bin/activate snakemake
 ```
+
+Then, run the workflow:
+```
+snakemake --use-conda -k
+```
+
+Currently, the all rule `dynamic("outputs/sylvestris/blast/tab/{contig_names_sylv}.tab")` in the `Snakefile` is commented out. This means that the pipeline will only output Oe6 relevant files. To output sylvestris files, uncomment the rule, and comment the Oe6 rule. 
 
 
 
