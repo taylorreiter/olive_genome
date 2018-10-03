@@ -40,10 +40,10 @@ library(dplyr)
     non_repeats <- filter(tab, (!qseqid %in% olea_repeat_contigs))
 
 # add a column for species name of match. First, sort by highest bitscore per contig to avoid sending over 7000 queries to NCBI; sends 125 instead. 
+    
     # select highest bitscore for each contig
     # Sort by qseqid and bitscore (largest bitscore is last for each qseqid)
     non_repeats <- non_repeats[order(non_repeats$qseqid, non_repeats$bitscore), ]
-    
     # Select the last row by id
     non_repeats_bitscore <- non_repeats[!duplicated(non_repeats$qseqid, fromLast=TRUE), ]
 
