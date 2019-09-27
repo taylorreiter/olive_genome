@@ -1,6 +1,6 @@
-This workflow was run on a amazon aws instance (ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-20171026.1 (ami-1c1d217c)).
+This workflow includes analyses to find contamination in the domesticated olive genome. The results are presented in [this preprint](https://www.biorxiv.org/content/10.1101/499541v1.full).
 
-To run this workflow, you must first install and configure miniconda (or anaconda if you prefer).
+This workflow was run on a amazon aws instance (ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-20171026.1 (ami-1c1d217c)). To run this workflow, you must first install and configure miniconda (or anaconda if you prefer).
 
 Install miniconda
 ```
@@ -12,14 +12,15 @@ Run through the prompts.
 
 Configure miniconda and create an environment
 ```
-~/miniconda3/bin/conda config --add channels r
-~/miniconda3/bin/conda config --add channels defaults
-~/miniconda3/bin/conda config --add channels conda-forge
-~/miniconda3/bin/conda config --add channels bioconda
+conda config --add channels r
+conda config --add channels defaults
+conda config --add channels bioconda
+conda config --add channels conda-forge
 
-~/miniconda3/bin/conda create -n snakemake python==3.6 snakemake=4.3.0 pysam=0.13 pandas=0.20.3 numpy=1.13.3 sourmash=2.0.0a2
 
-source ~/miniconda3/bin/activate snakemake
+conda create -n snakemake python==3.6 snakemake=4.3.0 pysam=0.13 pandas=0.20.3 numpy=1.13.3 sourmash=2.0.0a2
+
+conda activate snakemake
 ```
 
 Then, run the workflow:
