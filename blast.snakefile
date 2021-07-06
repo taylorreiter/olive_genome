@@ -24,62 +24,28 @@ rule download_sylv_inputs_blast:
 		gunzip -c {output.gz} > {output.uncmp}
     '''
 
-rule samtools_index_Oe6:
-    output: 'inputs/Oe6/Oe6.scaffolds.fa.fai'
-    input: 'inputs/Oe6/Oe6.scaffolds.fa'
-    conda: "envs/env.yml"
-    shell:'''
-    	samtools faidx {input}
-    '''
-    
-rule samtools_index_sylvestris:
-    output: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.fai'
-    input: 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa'
-    conda: "envs/env.yml"
-    shell:'''
-    	samtools faidx {input}
-    '''
-    
 subworkflow tetramernucleotide_clustering:
     workdir: "tetramernucleotide"
     snakefile: "tetramernucleotide/tetramernucleotide.snakefile"
 
 rule grab_suspicious_contigs_Oe6:
-    output: dynamic('outputs/Oe6/suspicious_contigs/{contig_names}.fa')
+    output: 'outputs/Oe6/suspicious_contigs/Oe6_suspicious_contigs.fa'
     input: 
         contigs=tetramernucleotide_clustering('outputs/Oe6/suspicious_contigs.txt'),
         genome = 'inputs/Oe6/Oe6.scaffolds.fa',
-        fai = 'inputs/Oe6/Oe6.scaffolds.fa.fai' 
-    run:
-        fasta = pysam.Fastafile(filename = input.genome)
-        f=open(input.contigs,'r')
-        for line in f.readlines():
-            # strip white space
-            line = line.strip()
-            # use pysam to grab the line of interest
-            fasta_of_interest = fasta.fetch(line)
-            with open(f"outputs/Oe6/suspicious_contigs/{line}.fa", "w") as text_file:
-                # write content of fasta file with appropriate header and sequence
-                text_file.write(f">{line}\n{fasta_of_interest}")    
+    shell:'''
+    ./extract-matches.py {input.contigs} {input.genome} > {output}   
+    ''' 
 
 rule grab_suspicious_contigs_sylv:
-    output: dynamic('outputs/sylvestris/suspicious_contigs/{contig_names_sylv}.fa')
+    output: 'outputs/sylvestris/suspicious_contigs/sylv_suspicious_contigs.fa'
     input: 
         contigs = tetramernucleotide_clustering('outputs/sylvestris/suspicious_contigs.txt'),
         genome = 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa',
-        fai = 'inputs/sylvestris/Olea_europaea_1kb_scaffolds.fa.fai' 
-    run:
-        fasta = pysam.Fastafile(filename = input.genome)
-        f=open(input.contigs,'r')
-        for line in f.readlines():
-            # strip white space
-            line = line.strip()
-            # use pysam to grab the line of interest
-            fasta_of_interest = fasta.fetch(line)
-            with open(f"outputs/sylvestris/suspicious_contigs/{line}.fa", "w") as text_file:
-                # write content of fasta file with appropriate header and sequence
-                text_file.write(f">{line}\n{fasta_of_interest}")    
- 
+    shell:'''
+    ./extract-matches.py {input.contigs} {input.genome} > {output}   
+    ''' 
+
 num = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51']
 
 rule install_blast_db:
@@ -91,9 +57,9 @@ rule install_blast_db:
     '''
    
 rule blast_low_similarity_contigs_Oe6: 
-    output: 'outputs/Oe6/blast/asn/{contig_names}.asn'
+    output: 'outputs/Oe6/blast/asn/Oe6_suspicious_contigs.asn'
     input: 
-        contig='outputs/Oe6/suspicious_contigs/{contig_names}.fa',
+        contig='outputs/Oe6/suspicious_contigs/Oe6_suspicious_contigs.fa',
         db=expand('inputs/blast_db/nt.{n}.tar.gz', n = num)
     conda: "envs/env.yml"
     shell:'''
@@ -101,9 +67,9 @@ rule blast_low_similarity_contigs_Oe6:
     '''
 
 rule blast_low_similarity_contigs_sylv: 
-    output: 'outputs/sylvestris/blast/asn/{contig_names_sylv}.asn'
+    output: 'outputs/sylvestris/blast/asn/sylv_suspicious_contigs.asn'
     input: 
-        contig='outputs/sylvestris/suspicious_contigs/{contig_names_sylv}.fa',
+        contig='outputs/sylvestris/suspicious_contigs/sylv_suspicious_contigs.fa',
         db=expand('inputs/blast_db/nt.{n}.tar.gz', n = num)
     conda: "envs/env.yml"
     shell:'''
@@ -111,16 +77,16 @@ rule blast_low_similarity_contigs_sylv:
     '''
 
 rule convert_blast_to_tab:
-    output: 'outputs/Oe6/blast/tab/{contig_names}.tab'
-    input: 'outputs/Oe6/blast/asn/{contig_names}.asn'
+    output: 'outputs/Oe6/blast/tab/Oe6_suspicious_contigs.tab'
+    input: 'outputs/Oe6/blast/asn/Oe6_suspicious_contigs.asn'
     conda: "envs/env.yml"
     shell:'''
     	blast_formatter -archive {input} -outfmt 6 -out {output}
     '''
 
 rule convert_blast_to_tab_sylv:
-    output: 'outputs/sylvestris/blast/tab/{contig_names_sylv}.tab'
-    input: 'outputs/sylvestris/blast/asn/{contig_names_sylv}.asn'
+    output: 'outputs/sylvestris/blast/tab/sylv_suspicious_contigs.tab'
+    input: 'outputs/sylvestris/blast/asn/sylv_suspicious_contigs.asn'
     conda: "envs/env.yml"
     shell:'''
     	blast_formatter -archive {input} -outfmt 6 -out {output}
